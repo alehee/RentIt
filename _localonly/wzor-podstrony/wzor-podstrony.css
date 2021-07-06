@@ -1,0 +1,5 @@
+@import url("def/style.css"); /* DOPROWADŹ DO GŁÓWNEGO CSS! */
+
+body{
+    font-weight: 800;
+}
