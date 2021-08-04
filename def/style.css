@@ -4,3 +4,35 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+header, footer{
+    background-color: #79d279;
+}
+
+header{
+    width: 100%; 
+}
+
+header h1{
+    font-weight: 600;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: white;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+footer p{
+    color: white;
+    font-size: small;
+}

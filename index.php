@@ -1,21 +1,42 @@
 <?php
-require_once('def/def.php') //ŁĄCZYMY SIĘ Z BAZĄ PODSTAWOWYCH KOMPONENTÓW
+    // Request default php file
+    require_once('def/def.php')
 ?>
 
 <!DOCTYPE html>
 <html lang="pl">
     <head>
+
         <meta charset="utf-8"/>
         <title>Rent It</title>
 
-        <?php echo $headContent ?>
+        <?php echo $def_Head ?>
 
         <link rel="stylesheet" type="text/css" href="strona-glowna.css?date=<?php echo $cssUpdateVariable; ?>" />
-
-        <script src="def/script.js"></script>
-        <script src="strona-glowna.js"></script>
+    
     </head>
+
     <body>
-        <p style="text-align:center; margin:10px;">Rent It!</p>
+
+        <!-- Header --->
+        <?php echo $def_Header ?>
+
+        <!-- Link to control panel --->
+
+        <!-- How much equipment --->
+
+        <!-- Navigation --->
+
+        <!-- Rankings --->
+
+        <!-- Footer --->
+        <?php echo $def_Footer ?>
+    
     </body>
+
+    <!-- SCRIPT AREA --->
+    <?php echo $def_AfterBody ?>
+    <script src="def/script.js"></script>
+    <script src="strona-glowna.js"></script>
+
 </html>
