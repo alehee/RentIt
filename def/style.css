@@ -10,11 +10,12 @@ header, footer{
 }
 
 header{
-    width: 100%; 
+    width: 100%;
 }
 
 header h1{
-    font-weight: 600;
+    font-weight: 600;    
+    font-style: italic;
 }
 
 header a{
@@ -24,6 +25,7 @@ header a{
 
 header a:hover{
     color: white;
+    cursor: pointer;
 }
 
 footer{

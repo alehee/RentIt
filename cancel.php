@@ -8,11 +8,11 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It</title>
+        <title>Rent It - Cancel</title>
 
         <?php echo $def_Head ?>
 
-        <link rel="stylesheet" type="text/css" href="css/index.css?date=<?php echo $cssUpdateVariable; ?>" />
+        <link rel="stylesheet" type="text/css" href="css/cancel.css?date=<?php echo $cssUpdateVariable; ?>" />
     
     </head>
 
@@ -20,14 +20,6 @@
 
         <!-- Header --->
         <?php echo $def_Header ?>
-
-        <!-- Link to control panel --->
-
-        <!-- How much equipment --->
-
-        <!-- Navigation --->
-
-        <!-- Rankings --->
 
         <!-- Footer --->
         <?php echo $def_Footer ?>
@@ -37,6 +29,6 @@
     <!-- SCRIPT AREA --->
     <?php echo $def_AfterBody ?>
     <script src="def/script.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/cancel.js"></script>
 
 </html>

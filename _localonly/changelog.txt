@@ -1,2 +1,2 @@
-0.1.0 --- active
-    - first functional version
+* ** 0.0.1 ** --- in development
+    * first functional version
