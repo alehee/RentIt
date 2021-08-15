@@ -1,6 +1,6 @@
 <?php
     // Request default php file
-    require_once('def/def.php')
+    require_once('def/def.php');
 ?>
 
 <!DOCTYPE html>

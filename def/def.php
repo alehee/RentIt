@@ -18,7 +18,7 @@ $def_AfterBody = '
 /// Set default header variable
 $def_Header = '
 <header class="text-center py-4">
-    <a href="index.php"><h1>RENT IT!</h1></a>
+    <h1 id="header-title">RENT IT!</h1>
 </header>
 ';
 /// ==========
