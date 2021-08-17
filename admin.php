@@ -21,6 +21,14 @@
         <!-- Header --->
         <?php echo $def_Header ?>
 
+        <!-- Main information shortcut --->
+
+        <!-- Requests to accept --->
+
+        <!-- Add new item --->
+
+        <!-- Edit item --->
+
         <!-- Footer --->
         <?php echo $def_Footer ?>
     

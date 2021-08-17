@@ -21,8 +21,6 @@
         <!-- Header --->
         <?php echo $def_Header ?>
 
-        <!-- Link to control panel --->
-
         <!-- How much equipment --->
 
         <!-- Navigation --->
@@ -30,7 +28,7 @@
         <!-- Rankings --->
 
         <!-- Footer --->
-        <?php echo $def_Footer ?>
+        <?php echo $def_Footer_Index ?>
     
     </body>
 

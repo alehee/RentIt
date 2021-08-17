@@ -25,7 +25,16 @@ $def_Header = '
 
 /// Set default footer variable
 $def_Footer = '
-<footer class="py-2 px-3">
+<footer class="pt-2 px-3">
+    <p style="float:left;">Platform Version '.$VERSION.'</p>
+    <p style="float:right;">Aleksander Heese 2021</p>
+    <div style="clear:both;"></div>
+</footer>
+';
+
+$def_Footer_Index = '
+<footer class="pt-2 px-3">
+    <span style="float:left;"><a href="admin.php">Admin panel</a></span><br>
     <p style="float:left;">Platform Version '.$VERSION.'</p>
     <p style="float:right;">Aleksander Heese 2021</p>
     <div style="clear:both;"></div>

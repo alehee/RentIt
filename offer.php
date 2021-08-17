@@ -21,6 +21,10 @@
         <!-- Header --->
         <?php echo $def_Header ?>
 
+        <!-- Nutshell of the items information --->
+
+        <!-- Items list with categories etc --->
+
         <!-- Footer --->
         <?php echo $def_Footer ?>
     

@@ -1,6 +1,10 @@
 <?php
     // Request default php file
     require_once('def/def.php');
+
+    /// Checking if cancellation is available
+
+    /// ==========
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +24,8 @@
 
         <!-- Header --->
         <?php echo $def_Header ?>
+
+        <!-- Order info and cancellation button --->
 
         <!-- Footer --->
         <?php echo $def_Footer ?>
