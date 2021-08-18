@@ -12,7 +12,7 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It - Cancel</title>
+        <title>Rent It - Cancellation</title>
 
         <?php echo $def_Head ?>
 

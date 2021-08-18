@@ -1,6 +1,8 @@
 <?php
-    $HOST = "";
-    $USER = "";
+    $HOST = "localhost";
+    $USER = "root";
     $PASSWORD = "";
-    $DATABASE = "";
+    $DATABASE = "rentit";
+
+    $connection = mysqli_connect($HOST, $USER, $PASSWORD, $DATABASE);
 ?>

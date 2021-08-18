@@ -24,6 +24,9 @@
         <!-- How much equipment --->
 
         <!-- Navigation --->
+        <div class="d-grid col-4 mx-auto py-3">
+            <button id="index-navi-button" type="button" class="btn btn-primary btn-rentit">Check full offer here</button>
+        </div>
 
         <!-- Rankings --->
 

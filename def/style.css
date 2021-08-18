@@ -47,3 +47,12 @@ footer a:hover{
     cursor: pointer;
     text-decoration: underline;
 }
+
+.btn-rentit{
+    background-color: #b3b3b3;
+    border: none;
+}
+
+.btn-rentit:hover, .btn-rentit:focus{
+    background-color: #999999;
+}
