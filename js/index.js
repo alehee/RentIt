@@ -1,3 +1,3 @@
-$( "#index-navi-button" ).click(function() {
+$( "#index-btn-navi" ).click(function() {
     window.location.href = "offer.php";
 });

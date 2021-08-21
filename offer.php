@@ -1,6 +1,9 @@
 <?php
     // Request default php file
     require_once('def/def.php');
+
+    // Request querys php file
+    require_once('php/query.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +27,17 @@
         <!-- Nutshell of the items information --->
 
         <!-- Items list with categories etc --->
+        <h2 id="offer-h2-title" class="d-grid mx-auto pt-4">THAT'S OUR GEAR!</h2>
+        <div id="offer-list" class="d-grid mx-auto py-3 p-1 rounded container">
+            <div class="row">
+                <div class="col">
+                    <?php query_GetOffer(); ?>
+                </div>
+                <div class="col-9">
+                    <p>Select the gear you want to check!</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer --->
         <?php echo $def_Footer ?>

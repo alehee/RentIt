@@ -7,8 +7,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
-header, footer{
+header, footer, .offer-header-category{
     background-color: #79d279;
+}
+
+.offer-header-subcategory{
+    background-color: #39ac39;
+}
+
+.offer-header-item{
+    background-color: #2d862d;
 }
 
 header{

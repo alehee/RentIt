@@ -1,2 +1,38 @@
 @import url("../def/style.css");
 
+#offer-h2-title{
+    font-weight: 600;    
+    font-style: italic;
+    display: inline-block;
+    text-align: center;
+    color: gray;
+}
+
+#offer-list{
+    width: 90%;
+    border: 2px solid gray;
+    background-color: #e6e6e6;
+}
+
+#offer-list .col-9 p{
+    text-align: center;
+    padding-top: 20px;
+    font-size: large;
+}
+
+.offer-header-category, .offer-header-subcategory, .offer-header-item{
+    color: white;
+    text-align: center;
+}
+
+.offer-header-category{
+    font-weight: 600;
+}
+
+.offer-box-subcategory, .offer-box-item{
+    display: none;
+}
+
+.offer-header-category:hover, .offer-header-subcategory:hover, .offer-header-item:hover{
+    cursor: pointer;
+}

@@ -1,8 +1,10 @@
 <?php
-    $HOST = "localhost";
-    $USER = "root";
-    $PASSWORD = "";
-    $DATABASE = "rentit";
+    function getConnection(){
+        $HOST = "localhost";
+        $USER = "root";
+        $PASSWORD = "root";
+        $DATABASE = "rentit";
 
-    $connection = mysqli_connect($HOST, $USER, $PASSWORD, $DATABASE);
+        return mysqli_connect($HOST, $USER, $PASSWORD, $DATABASE);
+    }
 ?>

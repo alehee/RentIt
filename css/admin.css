@@ -1,2 +1,12 @@
 @import url("../def/style.css");
 
+#admin-logout button{
+    font-size: small;
+    float: right;
+    margin: 5px;
+    background-color: red;
+}
+
+#admin-logout button:hover{
+    background-color: darkred;
+}
