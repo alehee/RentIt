@@ -55,7 +55,7 @@
                 echo '<div id="sub_'.$subId.'_index" class="mt-1 p-1 rounded offer-header-subcategory">'.$sub[0].'</div>';
                 echo '<div id="sub_'.$subId.'" class="offer-box-item">';
                 foreach($sub[1] as $itemId=>$item){
-                    echo '<div class="mt-1 p-1 rounded offer-header-item">'.$item[0].'</div>';
+                    echo '<div id="item_'.$itemId.'" class="mt-1 p-1 rounded offer-header-item">'.$item[0].'</div>';
                 }
                 echo '</div>';
             }

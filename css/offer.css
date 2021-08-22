@@ -14,10 +14,71 @@
     background-color: #e6e6e6;
 }
 
-#offer-list .col-9 p{
+#offer-list-image{
+    max-height: 250px;
+}
+
+#offer-list-title, #offer-list-description, #offer-list-onstock{
     text-align: center;
-    padding-top: 20px;
-    font-size: large;
+}
+
+#offer-list-title{
+    font-size: x-large;
+    margin: 0;
+}
+
+#offer-list-description{
+
+}
+
+#offer-list-onstock{
+    color: gray;
+    font-size: small;
+    margin: 0;
+}
+
+#offer-list-datebox{
+    width: 100%;
+    border: 2px solid gray;
+    font-size: small;
+    text-align: center;
+    background-color: white;
+}
+
+#offer-list-datebox div:nth-child(2n){
+    background-color: #e6e6e6;
+}
+
+#offer-list-date div{
+    display: inline-block;
+    white-space: nowrap;
+    padding: 5px;
+}
+
+#offer-list-date-start, #offer-list-date-end{
+    font-size: small;
+}
+
+#offer-list-btn-date{
+    font-size: small;
+}
+
+#offer-list-order-not{
+    display: block;
+    width: 100%;
+    color: red;
+    font-size: small;
+}
+
+#offer-list-btn-order{
+    display: block;
+    width: 70%;
+    margin: 10px 15%;
+    background-color: #79d279;
+}
+
+#offer-list-btn-order:hover{
+    background-color: #39ac39;
 }
 
 .offer-header-category, .offer-header-subcategory, .offer-header-item{
