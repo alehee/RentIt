@@ -13,8 +13,8 @@ Langagues:
 * HTML
 
 Frameworks and other:
-* JQuery 3.4.1
-* Bootstrap 5
+* JQuery 3.6.0
+* Bootstrap 5.1.0
 
 ## Download and installation
 There's two ways: you can download the master branch with code, check how it's working and upload it on your hosting or try it with XAMPP, or simply download .zip with all needed files.

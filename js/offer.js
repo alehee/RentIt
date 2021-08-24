@@ -23,6 +23,12 @@ $(document).on('click', '.offer-header-item', function(clicked){
         $( '#offer-list-title' ).attr('name', target);
         $( '#offer-list-description' ).text(data.description);
         $( '#offer-list-onstock-indicator' ).text(data.onstock);
+
+        var photo = data.photo;
+        if(photo != false)
+            $( '#offer-list-image' ).attr('src', 'photo/'+photo);
+        else
+            $( '#offer-list-image' ).attr('src', 'img/no-image.png');
     }, "json");
 
     $( '#offer-list-show' ).css("display", "block");
