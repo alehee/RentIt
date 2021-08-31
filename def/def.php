@@ -25,6 +25,7 @@ $def_Header = '
 
 /// Set default footer variable
 $def_Footer = '
+<div style="clear:both;"></div>
 <footer class="pt-2 px-3">
     <p style="float:left;">Platform Version '.$VERSION.'</p>
     <p style="float:right;">Aleksander Heese 2021</p>

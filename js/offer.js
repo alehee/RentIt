@@ -38,5 +38,15 @@ $(document).on('click', '.offer-header-item', function(clicked){
 // Check availability of item
 $(document).on('click', '#offer-list-btn-date', function(clicked){
     var target = $( '#offer-list-title' ).attr('name');
-    alert(target);
+    var start = $( '#offer-list-date-start' ).val();
+    var end = $( '#offer-list-date-end' ).val();
+
+    if(!start || !end)
+        alert('Enter valid dates');
+
+    else{
+        $.post( "php/post.php", { check: target, checkStart: start, checkEnd: end }, function( data ) {
+            console.log(data);
+        }, "json");
+    }
 });

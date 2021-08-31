@@ -60,7 +60,41 @@
             array_push($itemOrders, ["start"=>$res["OrderStart"], "end"=>$res["OrderEnd"], "accept"=>$res["Accept"]]);
         }
 
-        echo json_encode(array("available"=>$itemDecision, "orders"=>$itemOnStock));
+        // Decision algoritm
+        $decisionStart = new DateTime($itemStart);
+        $decisionEnd = new DateTime($itemEnd);
+        $decisionDateBuffer = $decisionStart;
+        while($decisionDateBuffer>=$decisionEnd && $itemDecision == true){
+            $decisionStock = $itemOnStock;
+
+            foreach($itemOrders as $order){
+                if($decisionDateBuffer >= new DateTime($order["start"]) && $decisionDateBuffer <= new DateTime($order["end"]))
+                    $decisionStock -= 1;
+            }
+
+            if($decisionStock<1){
+                $itemDecision = false;
+            }
+        }
+
+        echo json_encode(array("available"=>$itemDecision, "orders"=>$itemOrders));
+    }
+    /// ==========
+
+    /// POST: insert new order to table
+    if(isset($_POST["newOrder"])){
+        $order = $_POST["newOrder"];
+        unset($_POST["newOrder"]);
+
+        $orderItem;
+        $orderName;
+        $orderEmail;
+        $orderStart;
+        $orderEnd;
+
+        $message = "ok";
+
+        echo json_encode(array("message"=>$message));
     }
     /// ==========
 ?>
