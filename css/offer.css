@@ -72,8 +72,9 @@
 
 #offer-list-btn-order{
     display: block;
-    width: 70%;
-    margin: 10px 15%;
+    white-space: inherit;
+    width: 80%;
+    margin: 10px 10%;
     background-color: #79d279;
 }
 
@@ -96,4 +97,32 @@
 
 .offer-header-category:hover, .offer-header-subcategory:hover, .offer-header-item:hover{
     cursor: pointer;
+}
+
+.offer-modal-btn{
+    background-color: #79d279;
+    border: none;
+}
+
+.offer-modal-btn:hover{
+    background-color: #39ac39;
+}
+
+.offer-modal-btn:focus{
+    outline: none;
+    box-shadow: none;
+    background-color: #39ac39;
+}
+
+.offer-modal-title{
+    color: #79d279;
+    font-size: large;
+    text-align: center;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.offer-modal-result{
+    text-align: center;
+    font-size: medium;
 }
