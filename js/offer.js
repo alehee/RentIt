@@ -63,11 +63,12 @@ $(document).on('click', '#offer-list-btn-date', function(clicked){
 
             $( '#offer-list-datebox' ).empty();
             if(orders.length > 0){
-                orders.array.forEach(order => {
-                    console.log(order['start']);
-                    console.log(order['end']);
-                    console.log(order['accept']);
-                });
+                var inputed = 0;
+                for(var i=0; i<orders.length; i++){
+                    console.log(orders[i]);
+                    inputed++;
+                    $( '#offer-list-datebox' ).append('<div>No. '+inputed+': From <b>'+orders[i].start+'</b> to <b>'+orders[i].end+'</b></div>');
+                }
             }
             else{
                 $( '#offer-list-datebox' ).append('<div>No orders for this date range!</div>');
@@ -109,12 +110,33 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
 
     /// Loading screen and waiting for check
     $( '#offer-modal-body' ).empty();
-    $( '#offer-modal-body' ).append('Loading...');
-    /// ==========
+    $( '#offer-modal-body' ).append('Your order is being processing...');
 
-    /// Showing the result
-    $( '#offer-modal-body' ).empty();
-    $( '#offer-modal-body' ).append('Result progressed');
-    $( '#offer-modal-btn-send' ).css('display', 'none');
+    $.post( "php/post.php", { newOrder: { item: target, start: start, end: end, name: name, email: email, phone: phone } }, function( data ) {
+
+        console.log(data.message+", "+data.orderNumber);
+        var message = data.message;
+        var orderNumber = data.orderNumber;
+
+        /// Showing the result
+        $( '#offer-modal-btn-send' ).css('display', 'none');
+        $( '#offer-modal-btn-close' ).css('display', 'none');
+
+        $( '#offer-modal-body' ).empty();
+        if(message == true){
+            $( '#offer-modal-body' ).append('Order completed!<br>Number of this transaction is <b>'+orderNumber+'</b>.<br>Acceptation of the order will be sended in mail soon.<br>Wait for page reload!');
+
+            setTimeout(function() {
+                location.reload();
+            }, 8000);
+        }
+        else{
+            $( '#offer-modal-body' ).append('Error occured while seting order. Try again later!');
+            console.log(orderNumber);
+        }
+        /// ========== 
+
+    }, "json");
     /// ==========
+    
 });

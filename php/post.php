@@ -39,8 +39,6 @@
         $itemEnd = $_POST["checkEnd"];
         $itemOnStock = 0;
         $itemOrders = [];
-        
-        $itemDecision = true;
 
         unset($_POST["check"]);
         unset($_POST["checkStart"]);
@@ -54,7 +52,7 @@
             $itemOnStock = $res["OnStock"];
         }
 
-        $sql = "SELECT `OrderStart`, `OrderEnd`, `Accept` FROM orders WHERE `IdItem`='$itemId' AND `OrderStart`>='$itemStart' AND `OrderEnd`<='$itemEnd'";
+        $sql = "SELECT `OrderStart`, `OrderEnd`, `Accept` FROM orders WHERE `IdItem`='$itemId' AND ((`OrderStart` BETWEEN '$itemStart' AND '$itemEnd') OR (`OrderEnd` BETWEEN '$itemStart' AND '$itemEnd'))";
         $que = mysqli_query($connection, $sql);
         while($res = mysqli_fetch_array($que)){
             array_push($itemOrders, ["start"=>$res["OrderStart"], "end"=>$res["OrderEnd"], "accept"=>$res["Accept"]]);
@@ -64,13 +62,17 @@
         $decisionStart = new DateTime($itemStart);
         $decisionEnd = new DateTime($itemEnd);
         $decisionDateBuffer = $decisionStart;
-        while($decisionDateBuffer>=$decisionEnd && $itemDecision == true){
+        $itemDecision = true;
+
+        while($decisionDateBuffer<=$decisionEnd && $itemDecision == true){
             $decisionStock = $itemOnStock;
 
             foreach($itemOrders as $order){
                 if($decisionDateBuffer >= new DateTime($order["start"]) && $decisionDateBuffer <= new DateTime($order["end"]))
                     $decisionStock -= 1;
             }
+
+            $decisionDateBuffer->modify('+1 day');
 
             if($decisionStock<1){
                 $itemDecision = false;
@@ -83,18 +85,31 @@
 
     /// POST: insert new order to table
     if(isset($_POST["newOrder"])){
-        $order = $_POST["newOrder"];
-        unset($_POST["newOrder"]);
+        try{
+            $order = $_POST["newOrder"];
+            unset($_POST["newOrder"]);
 
-        $orderItem;
-        $orderName;
-        $orderEmail;
-        $orderStart;
-        $orderEnd;
+            $orderItem = $order["item"];
+            $orderName = $order["name"];
+            $orderEmail = $order["email"];
+            $orderStart = $order["start"];
+            $orderEnd = $order["end"];
+            $orderPhone = $order["phone"];
 
-        $message = "ok";
+            $timestamp = new DateTime();
+            $orderNumber = $orderItem."T".$timestamp->getTimestamp();
 
-        echo json_encode(array("message"=>$message));
+            //$message = $orderItem.", ".$orderName.", ".$orderEmail.", ".$orderStart.", ".$orderEnd.", ".$orderPhone;
+
+            $connection = getConnection();
+
+            $sql = "INSERT INTO orders (`Id`, `IdItem`, `OrderNumber`, `OrderName`, `OrderEmail`, `OrderPhone`, `OrderStart`, `OrderEnd`) VALUES (default, '$orderItem', '$orderNumber', '$orderName', '$orderEmail', '$orderPhone', '$orderStart', '$orderEnd')";
+            $que = mysqli_query($connection, $sql);
+
+            echo json_encode(array("message"=>true, "orderNumber"=>$orderNumber));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>false, "orderNumber"=>$e->getMessage()));
+        }
     }
     /// ==========
 ?>

@@ -38,10 +38,17 @@
 
         <!-- Main information shortcut --->
 
+        <!-- Next three days events (start/end of order) --->
+        <div>
+
+        </div>
+
         <!-- Requests to accept --->
         <div>
 
         </div>
+
+        <!-- Full list of items and orders --->
 
         <!-- Add new item --->
 
