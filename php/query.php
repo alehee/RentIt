@@ -2,6 +2,22 @@
     // Require connection file
     require_once('connection.php');
 
+    /// Handler for POST
+    if(isset($_POST["function"])){
+        $func = $_POST["function"];
+        unset($_POST["function"]);
+        
+        switch($func){
+            case 'GetOrdersToAccept':
+                query_GetOrdersToAccept();
+                break;
+            case 'GetOrdersUpcoming':
+                query_GetOrdersUpcoming();
+                break;
+        }
+    }
+    /// ==========
+
     /// Query: get list of offers
     function query_GetOffer(){
 
@@ -61,6 +77,44 @@
             }
             echo '</div>';
         }
+    }
+    /// ==========
+
+    /// Query: get list of orders to accept
+    function query_GetOrdersToAccept(){
+
+        $toAccept = [];
+
+        $connection = getConnection();
+
+        // Add orders to array
+        $sql = "SELECT ORD.`Id`, ITE.`Name`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`Accept` IS NULL ORDER BY ORD.`OrderStart` ASC";
+        $que = mysqli_query($connection, $sql);
+        while($res = mysqli_fetch_array($que)){
+            array_push($toAccept, ["id"=>$res["Id"], "item"=>$res["Name"], "name"=>$res["OrderName"], "email"=>$res["OrderEmail"], "phone"=>$res["OrderPhone"], "start"=>$res["OrderStart"], "end"=>$res["OrderEnd"]]);
+        }
+
+        // Display orders
+        foreach($toAccept as $order){
+            echo "<tr id='admin_accept_".$order['id']."'>";
+            echo "<td>".$order['item']."</td>";
+            echo "<td>".$order['start']."</td>";
+            echo "<td>".$order['end']."</td>";
+            echo "<td>".$order['name']."</td>";
+            echo "<td>".$order['email']."</td>";
+            echo "<td>".$order['phone']."</td>";
+            echo "<td><button class='btn btn-primary btn-rentit admin-accept-btn admin-accept-btn-yes' name='yes'>Accept</button> <button class='btn btn-primary btn-rentit admin-accept-btn admin-accept-btn-no' name='no'>Cancel</button></td>";
+            echo "</tr>";
+        }
+    }
+    /// ==========
+
+    /// Query: get list of orders upcoming and ending in next 3 days
+    function query_GetOrdersUpcoming(){
+
+        $connection = getConnection();
+        
+        
     }
     /// ==========
 ?>

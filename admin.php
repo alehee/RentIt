@@ -5,6 +5,9 @@
     // Request default php file
     require_once('def/def.php');
 
+    // Request querys php file
+    require_once('php/query.php');
+
     if($_SESSION["admin"] != true)
         header("location:login.php");
 ?>
@@ -38,15 +41,25 @@
 
         <!-- Main information shortcut --->
 
-        <!-- Next three days events (start/end of order) --->
-        <div>
-
-        </div>
-
         <!-- Requests to accept --->
-        <div>
+        <h2 class="admin-accept-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
+        <table id="admin-accept-list" class="table table-striped">
+            <thead>
+                <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Decision</th></tr>
+            </thead>
+            <tbody id="admin-accept-list-orders">
+                <?php query_GetOrdersToAccept(); ?>
+            </tbody>
+        </table>
 
-        </div>
+        <!-- Next three days events (start/end of order) --->
+        <h2 class="admin-accept-title d-grid mx-auto pt-4">UPCOMING ORDERS</h2>
+        <table id="admin-upcoming-list" class="table table-striped">
+
+            <tbody id="admin-accept-list-upcoming">
+                <?php query_GetOrdersUpcoming(); ?>
+            </tbody>
+        </table>
 
         <!-- Full list of items and orders --->
 

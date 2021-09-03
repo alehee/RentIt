@@ -10,3 +10,36 @@
 #admin-logout button:hover{
     background-color: darkred;
 }
+
+.admin-accept-title{
+    font-weight: 600;    
+    font-style: italic;
+    display: inline-block;
+    text-align: center;
+    color: gray;
+}
+
+#admin-accept-list .admin-accept-btn-yes{
+    font-size: small;
+    background-color: green;
+}
+
+#admin-accept-list .admin-accept-btn-yes:hover{
+    background-color: darkgreen;
+}
+
+#admin-accept-list .admin-accept-btn-no{
+    font-size: small;
+    background-color: red;
+}
+
+#admin-accept-list .admin-accept-btn-no:hover{
+    background-color: darkred;
+}
+
+#admin-accept-list, #admin-upcoming-list{
+    width: 80%;
+    margin: 10px 10%;
+    font-size: small;
+    text-align: center;
+}

@@ -112,4 +112,27 @@
         }
     }
     /// ==========
+
+    /// POST: accept order
+    if(isset($_POST["acceptOrder"])){
+        $order = $_POST["acceptOrder"];
+        unset($_POST["acceptOrder"]);
+
+        try{
+            $connection = getConnection();
+
+            $orderId = $order["id"];
+            $decision = 0;
+            if($order["dec"] == "yes")
+                $decision = 1;
+
+            $sql = "UPDATE orders SET `Accept`='$decision', `AcceptTimestamp`=CURRENT_TIMESTAMP WHERE `Id`='$orderId'";
+            $que = mysqli_query($connection, $sql);
+
+            echo json_encode(array("message"=>true));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage()));
+        }
+    }
+    /// ==========
 ?>
