@@ -99,16 +99,21 @@
             $timestamp = new DateTime();
             $orderNumber = $orderItem."T".$timestamp->getTimestamp();
 
-            //$message = $orderItem.", ".$orderName.", ".$orderEmail.", ".$orderStart.", ".$orderEnd.", ".$orderPhone;
-
             $connection = getConnection();
 
             $sql = "INSERT INTO orders (`Id`, `IdItem`, `OrderNumber`, `OrderName`, `OrderEmail`, `OrderPhone`, `OrderStart`, `OrderEnd`) VALUES (default, '$orderItem', '$orderNumber', '$orderName', '$orderEmail', '$orderPhone', '$orderStart', '$orderEnd')";
             $que = mysqli_query($connection, $sql);
 
-            echo json_encode(array("message"=>true, "orderNumber"=>$orderNumber));
+            $orderItemName = '';
+            $sql = "SELECT `Name` FROM items WHERE `Id`='$orderItem'";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                $orderItemName = $res["Name"];
+            }
+
+            echo json_encode(array("message"=>true, "orderNumber"=>$orderNumber, "orderItem"=>$orderItemName));
         }catch(Exception $e) {
-            echo json_encode(array("message"=>false, "orderNumber"=>$e->getMessage()));
+            echo json_encode(array("message"=>false, "orderNumber"=>$e->getMessage(), "orderItem"=>false));
         }
     }
     /// ==========
@@ -132,6 +137,34 @@
             echo json_encode(array("message"=>true));
         }catch(Exception $e) {
             echo json_encode(array("message"=>$e->getMessage()));
+        }
+    }
+    /// ==========
+
+    /// POST: get order info
+    if(isset($_POST["getOrderInfo"])){
+        $orderId = $_POST["getOrderInfo"];
+        unset($_POST["getOrderInfo"]);
+
+        try{
+            $connection = getConnection();
+
+            $returnOrder = [];
+
+            $sql = "SELECT ITE.`Name`, ORD.`OrderNumber`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd`, ORD.`Accept` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`Id`='$orderId'";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                $returnOrder = ['to'=>$res['OrderEmail'], 'case'=>'', 'order'=>['number'=>$res['OrderNumber'], 'item'=>$res['Name'], 'name'=>$res['OrderName'], 'email'=>$res['OrderEmail'], 'phone'=>$res['OrderPhone'], 'start'=>$res['OrderStart'], 'end'=>$res['OrderEnd'], 'accept'=>$res['Accept']]];
+                
+                if($returnOrder['order']['accept'] == '1')
+                    $returnOrder['order']['accept'] = true;
+                else if($returnOrder['order']['accept'] == '0')
+                    $returnOrder['order']['accept'] = false;
+            }
+
+            echo json_encode(array("message"=>true, "order"=>$returnOrder));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage(), "order"=>null));
         }
     }
     /// ==========

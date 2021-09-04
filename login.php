@@ -7,7 +7,7 @@
 
     // Check login data
     $LOGGED = false;
-    $GOOD_PASSWORD = "123";
+    $GOOD_PASSWORD = "123"; // Change here the password!
 
     if(isset($_SESSION["admin"]) || isset($_POST["password"])){
         if(isset($_SESSION["admin"]))
@@ -50,23 +50,26 @@
     </head>
 
     <body>
+        <div class="content">
 
-        <!-- Header --->
-        <?php echo $def_Header ?>
+            <!-- Header --->
+            <?php echo $def_Header ?>
 
-        <!-- Login panel --->
-        <form action="login.php" method="post">
-            <div class="text-center">
-                <p class="pt-5">Enter administrator code:</p>
-            </div>
-            <div class="input-group mb-3 w-25 mx-auto">
-                <input id="login-input-enter" type="password" class="form-control" name="password">
-            </div>
+            <!-- Login panel --->
+            <form action="login.php" method="post">
+                <div class="text-center">
+                    <p class="pt-5">Enter administrator code:</p>
+                </div>
+                <div class="input-group mb-3 w-25 mx-auto">
+                    <input id="login-input-enter" type="password" class="form-control" name="password">
+                </div>
 
-            <div class="d-grid col-2 mx-auto">
-                <button id="login-btn-enter" type="submit" class="btn btn-primary btn-rentit">Log in!</button>
-            </div>
-        </form>
+                <div class="d-grid col-2 mx-auto">
+                    <button id="login-btn-enter" type="submit" class="btn btn-primary btn-rentit">Log in!</button>
+                </div>
+            </form>
+
+        </div>
 
         <!-- Footer --->
         <?php echo $def_Footer ?>

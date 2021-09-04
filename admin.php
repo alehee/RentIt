@@ -26,46 +26,63 @@
     </head>
 
     <body>
+        <div class="content">
 
-        <!-- Header --->
-        <?php echo $def_Header ?>
+            <!-- Header --->
+            <?php echo $def_Header ?>
 
-        <!-- Logout button --->
-        <form action="login.php" method="post">
-            <div id="admin-logout">
-                <input type="text" name="logout" style="display:none">
-                <button id="admin-btn-logout" type="submit" class="btn btn-primary btn-rentit">Logout</button>
+            <!-- Logout button --->
+            <form action="login.php" method="post">
+                <div id="admin-logout">
+                    <input type="text" name="logout" style="display:none">
+                    <button id="admin-btn-logout" type="submit" class="btn btn-primary btn-rentit">Logout</button>
+                </div>
+            </form>
+            <div style="clear:both"></div>
+
+            <!-- Main information shortcut --->
+
+            <!-- Requests to accept --->
+            <h2 class="admin-accept-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
+            <table id="admin-accept-list" class="table table-striped">
+                <thead>
+                    <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Decision</th></tr>
+                </thead>
+                <tbody id="admin-accept-list-orders">
+                    <?php query_GetOrdersToAccept(); ?>
+                </tbody>
+            </table>
+
+            <!-- Next three days events (start/end of order) --->
+            <h2 class="admin-accept-title d-grid mx-auto pt-4">UPCOMING/ENDING ORDERS</h2>
+            <table id="admin-upcoming-list" class="table table-striped">
+                <thead>
+                    <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th></tr>
+                </thead>
+                <tbody id="admin-accept-list-upcoming">
+                    <?php query_GetOrdersUpcoming(); ?>
+                </tbody>
+            </table>
+
+            <!-- Full list of items and orders --->
+
+            <!-- Add new item --->
+
+            <!-- Edit item --->
+
+            <!-- Wait for the process modal -->
+            <div class="modal fade" id="admin-wait-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="">WAIT FOR THE SYSTEM TO PROCESS</div>
+                            <div class=""><img src="img/loading.gif"/></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
-        <div style="clear:both"></div>
-
-        <!-- Main information shortcut --->
-
-        <!-- Requests to accept --->
-        <h2 class="admin-accept-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
-        <table id="admin-accept-list" class="table table-striped">
-            <thead>
-                <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Decision</th></tr>
-            </thead>
-            <tbody id="admin-accept-list-orders">
-                <?php query_GetOrdersToAccept(); ?>
-            </tbody>
-        </table>
-
-        <!-- Next three days events (start/end of order) --->
-        <h2 class="admin-accept-title d-grid mx-auto pt-4">UPCOMING ORDERS</h2>
-        <table id="admin-upcoming-list" class="table table-striped">
-
-            <tbody id="admin-accept-list-upcoming">
-                <?php query_GetOrdersUpcoming(); ?>
-            </tbody>
-        </table>
-
-        <!-- Full list of items and orders --->
-
-        <!-- Add new item --->
-
-        <!-- Edit item --->
+        
+        </div>
 
         <!-- Footer --->
         <?php echo $def_Footer ?>

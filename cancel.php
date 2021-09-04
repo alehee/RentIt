@@ -21,11 +21,14 @@
     </head>
 
     <body>
+        <div class="content">
 
-        <!-- Header --->
-        <?php echo $def_Header ?>
+            <!-- Header --->
+            <?php echo $def_Header ?>
 
-        <!-- Order info and cancellation button --->
+            <!-- Order info and cancellation button --->
+
+        </div>
 
         <!-- Footer --->
         <?php echo $def_Footer ?>

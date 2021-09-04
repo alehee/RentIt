@@ -43,3 +43,16 @@
     font-size: small;
     text-align: center;
 }
+
+#admin-wait-modal{
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#admin-wait-modal img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

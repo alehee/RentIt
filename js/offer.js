@@ -117,6 +117,7 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
         console.log(data.message+", "+data.orderNumber);
         var message = data.message;
         var orderNumber = data.orderNumber;
+        var orderItem = data.orderItem;
 
         /// Showing the result
         $( '#offer-modal-btn-send' ).css('display', 'none');
@@ -125,6 +126,18 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
         $( '#offer-modal-body' ).empty();
         if(message == true){
             $( '#offer-modal-body' ).append('Order completed!<br>Number of this transaction is <b>'+orderNumber+'</b>.<br>Acceptation of the order will be sended in mail soon.<br>Wait for page reload!');
+
+            // $mail = ["to"=>"aleksanderheesemail@gmail.com", "case"=>"acceptation", "order"=>["number"=>"4T42187468", "item"=>"Futsal Ball", "name"=>"Ale Hee", "email"=>"alehee@mail.com", "phone"=>"458105832", "start"=>"2021-09-04", "end"=>"2021-09-05", "accept"=>true]];
+            
+            // Confirmation for user
+            $.post( "php/mail.php", { mail: {to: email, case: 'confirmation', order: {number: orderNumber, item: orderItem, name: name, email: email, phone: phone, start: start, end: end, accept: null } } }, function( data ) {
+                console.log(data.message);
+            }, "json");
+
+            // Confirmation for admin
+            $.post( "php/mail.php", { mail: {to: email, case: 'confirmation_admin', order: {number: orderNumber, item: orderItem, name: name, email: email, phone: phone, start: start, end: end, accept: null } } }, function( data ) {
+                console.log(data.message);
+            }, "json");
 
             setTimeout(function() {
                 location.reload();

@@ -7,6 +7,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+html{
+    height: 100%;
+}
+
 header, footer, .offer-header-category{
     background-color: #79d279;
 }
@@ -34,9 +38,17 @@ header h1:hover{
     cursor: pointer;
 }
 
+body{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    flex: 1;
+}
+
 footer{
-    position:absolute;
-    bottom:0;
     width:100%;
     font-size: x-small;
 }

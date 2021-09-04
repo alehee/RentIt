@@ -112,9 +112,28 @@
     /// Query: get list of orders upcoming and ending in next 3 days
     function query_GetOrdersUpcoming(){
 
+        $orders = [];
+
         $connection = getConnection();
         
-        
+        // Add orders to array
+        $sql = "SELECT ITE.`Name`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`Accept`='1' AND ((ORD.`OrderStart`>=CURDATE() AND ORD.`OrderStart`<=CURDATE() + INTERVAL 2 DAY) OR (ORD.`OrderEnd`>=CURDATE() AND ORD.`OrderEnd`<=CURDATE() + INTERVAL 2 DAY)) ORDER BY CASE WHEN CURDATE()<=ORD.`OrderStart` THEN ORD.`OrderStart` ELSE ORD.`OrderEnd` END";
+        $que = mysqli_query($connection, $sql);
+        while($res = mysqli_fetch_array($que)){
+            array_push($orders, ["item"=>$res["Name"], "name"=>$res["OrderName"], "email"=>$res["OrderEmail"], "phone"=>$res["OrderPhone"], "start"=>$res["OrderStart"], "end"=>$res["OrderEnd"]]);
+        }
+
+        // Display orders
+        foreach($orders as $order){
+            echo "<tr>";
+            echo "<td>".$order['item']."</td>";
+            echo "<td>".$order['start']."</td>";
+            echo "<td>".$order['end']."</td>";
+            echo "<td>".$order['name']."</td>";
+            echo "<td>".$order['email']."</td>";
+            echo "<td>".$order['phone']."</td>";
+            echo "</tr>";
+        }
     }
     /// ==========
 ?>
