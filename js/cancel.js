@@ -1,5 +1,3 @@
-
-
 // Set cancelation and send mails
 $(document).on('click', '.cancel-box-btn', function(clicked){
     var decision = clicked.target.name;

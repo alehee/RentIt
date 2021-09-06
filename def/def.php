@@ -1,7 +1,9 @@
 <?php
 
-$VERSION = "0.0.1";
-$cssUpdateVariable = "04082021";
+/// Edit this with new versions
+$VERSION = "dev 0.1.0";
+$cssUpdateVariable = "06092021";
+/// ==========
 
 /// jQuery, Bootstrap linked
 $def_Head = '
@@ -15,7 +17,7 @@ $def_AfterBody = '
 ';
 /// ==========
 
-/// Set default header variable
+/// Set default header
 $def_Header = '
 <header class="text-center py-4">
     <h1 id="header-title">RENT IT!</h1>

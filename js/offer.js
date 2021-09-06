@@ -1,20 +1,18 @@
-
-
-// Slide category options
+// Slide category options script
 $(document).on('click', '.offer-header-category', function(clicked){
     var idName = clicked.target.id;
     var target = idName.replace('_index','');
     $( '#'+target ).slideToggle();
 });
 
-// Slide subcategory options
+// Slide subcategory options script
 $(document).on('click', '.offer-header-subcategory', function(clicked){
     var idName = clicked.target.id;
     var target = idName.replace('_index','');
     $( '#'+target ).slideToggle();
 });
 
-// Open info for item
+// Open info for item script
 $(document).on('click', '.offer-header-item', function(clicked){
     var idName = clicked.target.id;
     var target = idName.replace('item_','');
@@ -35,7 +33,7 @@ $(document).on('click', '.offer-header-item', function(clicked){
     $( '.offer-list-dates' ).css("display", "none");
 });
 
-// Check availability of item
+// Check availability of item script
 $(document).on('click', '#offer-list-btn-date', function(clicked){
     var target = $( '#offer-list-title' ).attr('name');
     var start = $( '#offer-list-date-start' ).val();
@@ -50,7 +48,6 @@ $(document).on('click', '#offer-list-btn-date', function(clicked){
         $( '#offer-list-btn-order' ).css("display", "none");
 
         $.post( "php/post.php", { check: target, checkStart: start, checkEnd: end }, function( data ) {
-            console.log(data);
             var available = data.available;
             var orders = data.orders;
 
@@ -65,7 +62,6 @@ $(document).on('click', '#offer-list-btn-date', function(clicked){
             if(orders.length > 0){
                 var inputed = 0;
                 for(var i=0; i<orders.length; i++){
-                    console.log(orders[i]);
                     inputed++;
                     $( '#offer-list-datebox' ).append('<div>No. '+inputed+': From <b>'+orders[i].start+'</b> to <b>'+orders[i].end+'</b></div>');
                 }
@@ -79,7 +75,7 @@ $(document).on('click', '#offer-list-btn-date', function(clicked){
     }
 });
 
-// Open modal with new order
+// Open modal with new order script
 $(document).on('click', '#offer-list-btn-order', function(clicked){
     var item = $( '#offer-list-title' ).text();
     var start = $( '#offer-list-date-start' ).val();
@@ -90,7 +86,7 @@ $(document).on('click', '#offer-list-btn-order', function(clicked){
     $( '#offer-modal-end' ).append(end);
 });
 
-// Modal send new request
+// Modal send new request script
 $(document).on('click', '#offer-modal-btn-send', function(clicked){
     var target = $( '#offer-list-title' ).attr('name');
     var start = $( '#offer-list-date-start' ).val();
@@ -100,7 +96,6 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
     var phone = $( '#offer-modal-phone' ).val();
 
     /// Checking data if is ok
-    console.log(target+", "+start+", "+end+", "+name+", "+email+", "+phone);
     if(!name || !email || !phone)
     {
         alert('Fill all the inputs!');
@@ -113,8 +108,6 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
     $( '#offer-modal-body' ).append('Your order is being processing...');
 
     $.post( "php/post.php", { newOrder: { item: target, start: start, end: end, name: name, email: email, phone: phone } }, function( data ) {
-
-        console.log(data.message+", "+data.orderNumber);
         var message = data.message;
         var orderNumber = data.orderNumber;
         var orderItem = data.orderItem;
@@ -127,16 +120,14 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
         if(message == true){
             $( '#offer-modal-body' ).append('Order completed!<br>Number of this transaction is <b>'+orderNumber+'</b>.<br>Acceptation of the order will be sended in mail soon.<br>Wait for page reload!');
 
-            // $mail = ["to"=>"aleksanderheesemail@gmail.com", "case"=>"acceptation", "order"=>["number"=>"4T42187468", "item"=>"Futsal Ball", "name"=>"Ale Hee", "email"=>"alehee@mail.com", "phone"=>"458105832", "start"=>"2021-09-04", "end"=>"2021-09-05", "accept"=>true]];
-            
             // Confirmation for user
             $.post( "php/mail.php", { mail: {to: email, case: 'confirmation', order: {number: orderNumber, item: orderItem, name: name, email: email, phone: phone, start: start, end: end, accept: null } } }, function( data ) {
-                console.log(data.message);
+                //console.log(data.message);
             }, "json");
 
             // Confirmation for admin
             $.post( "php/mail.php", { mail: {to: email, case: 'confirmation_admin', order: {number: orderNumber, item: orderItem, name: name, email: email, phone: phone, start: start, end: end, accept: null } } }, function( data ) {
-                console.log(data.message);
+                //console.log(data.message);
             }, "json");
 
             setTimeout(function() {
@@ -145,11 +136,9 @@ $(document).on('click', '#offer-modal-btn-send', function(clicked){
         }
         else{
             $( '#offer-modal-body' ).append('Error occured while seting order. Try again later!');
-            console.log(orderNumber);
         }
         /// ========== 
 
     }, "json");
     /// ==========
-    
 });

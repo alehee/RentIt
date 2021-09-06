@@ -1,17 +1,13 @@
-
-
-// Set acceptation status and send query
+// Set acceptation status and send query script
 $(document).on('click', '.admin-accept-btn', function(clicked){
     var decision = clicked.target.name;
     var target = $(this).closest('tr').attr('id').replace('admin_accept_', '');
-    //console.log(decision+", "+target);
 
     $( '#wait-modal' ).modal('show');
 
     $.post( "php/post.php", { acceptOrder: {id: target, dec: decision} }, function( data ) {
-        //console.log(data.message);
         if(data.message!=true){
-            alert("There's a problem with accepting order. Website will reload soon.");
+            alert("There's a problem with accepting order. Website will reload now.");
             
             setTimeout(function() {
                 location.reload();
@@ -19,13 +15,10 @@ $(document).on('click', '.admin-accept-btn', function(clicked){
         }
         else{
             /// Get data about order and send mail with decision to customer
-            $.post( "php/post.php", { getOrderInfo: target }, function( da ) {
-                //console.log("here "+da.message);
-                
-                if(da.message){
-                    da.order.case = 'acceptation';
-                    $.post( "php/mail.php", { mail: da.order }, function( d ) {
-                        //console.log(d.message);
+            $.post( "php/post.php", { getOrderInfo: target }, function( orderData ) {
+                if(orderData.message){
+                    orderData.order.case = 'acceptation';
+                    $.post( "php/mail.php", { mail: orderData.order }, function( mailData ) {
 
                         /// Refresh admin panel
                         $( '#admin-accept-list-orders' ).empty();

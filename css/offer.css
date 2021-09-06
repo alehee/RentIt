@@ -27,10 +27,6 @@
     margin: 0;
 }
 
-#offer-list-description{
-    
-}
-
 #offer-list-onstock{
     color: gray;
     font-size: small;
@@ -55,11 +51,7 @@
     padding: 5px;
 }
 
-#offer-list-date-start, #offer-list-date-end{
-    font-size: small;
-}
-
-#offer-list-btn-date{
+#offer-list-date-start, #offer-list-date-end, #offer-list-btn-date{
     font-size: small;
 }
 

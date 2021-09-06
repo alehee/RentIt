@@ -17,7 +17,7 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It - Admin</title>
+        <title>Admin panel - Rent It</title>
 
         <?php echo $def_Head ?>
 
@@ -64,7 +64,7 @@
                 </tbody>
             </table>
 
-            <!-- Full list of items and orders --->
+            <!-- Full list of orders --->
 
             <!-- Add new item --->
 
@@ -72,6 +72,7 @@
         
         </div>
 
+        <!-- Wait modal --->
         <?php echo $def_Modals ?>
 
         <!-- Footer --->

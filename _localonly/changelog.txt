@@ -1,6 +1,8 @@
 * ** 1.0.0 ** --- in development
 
 * ** 0.1.0 ** --- in development
+    * code cleanup and docs writing
+    * added banner to github
 
 * ** 0.0.1 ** --- 2021-09-06
     * first functional version

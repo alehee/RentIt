@@ -41,7 +41,7 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It - Login</title>
+        <title>Login - Rent It</title>
 
         <?php echo $def_Head ?>
 

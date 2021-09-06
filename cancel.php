@@ -9,12 +9,12 @@
     if(!isset($_GET["order"]))
         header('location: index.php');
 
+    // Request connection php file
     require_once('php/connection.php');
-
-    $orderNumber = $_GET['order'];
 
     $connection = getConnection();
 
+    $orderNumber = $_GET['order'];
     $times = 0;
 
     $sql = "SELECT `Id` FROM orders WHERE `OrderNumber`='$orderNumber' AND (`Accept`='1' OR `Accept` IS NULL)";
@@ -33,7 +33,7 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It - Cancellation</title>
+        <title>Cancellation - Rent It</title>
 
         <?php echo $def_Head ?>
 
@@ -61,6 +61,7 @@
             
         </div>
 
+        <!-- Wait modal --->
         <?php echo $def_Modals ?>
 
         <!-- Footer --->

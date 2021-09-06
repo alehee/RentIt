@@ -1,8 +1,11 @@
 # RentIt
-** project photo coming soon! **
+
+<p align="center">
+  <img src="https://github.com/alehee/androidDatabaseTester/blob/main/_localonly/bg.png">
+</p>
 
 ## Description
-*RentIt* is an universal web platform for rent-a-thing purposes written in PHP with Bootstrap and JQuery with admin control panel, easy to use UI and cool stuff like top lists.
+*RentIt* is an universal web platform for rent-a-thing purposes written in PHP with Bootstrap and JQuery with admin control panel, easy to use UI and cool stuff like top lists. 
 
 ## Used technology
 Langagues:
@@ -16,7 +19,7 @@ Frameworks and other:
 * JQuery 3.6.0
 * Bootstrap 5.1.0
 
-## Download and installation
+## Download
 There's two ways: you can download the master branch with code, check how it's working and upload it on your hosting or try it with XAMPP, or simply download .zip with all needed files.
 
 ### Requirements
@@ -24,19 +27,19 @@ There's two ways: you can download the master branch with code, check how it's w
 * Prefered e-mail account on hosting
 * MySQL server (or any other SQL server)
 
-### Download
-The download link will be available with first functional version of the website!
+### Download link
+[Here's](https://drive.google.com/file/d/1skgWdq1h09qe2LZS4ny8AgbnQ15w-hir/view?usp=sharing) the download link for the latest version of the website in .zip file.
 
-### Installation
+## Installation
 Almost there! I'm writing docs right now. Seriously.
 
-## How to use
-Section will be updated with growth of project!
+## How it works?
+It's gonna be legen- wait for it...
 
 ## Changelog
 What's new with the project? Here's the list:
 
-* ** 0.0.1 ** --- 2021-09-06
+* **0.0.1** --- 2021-09-06
     * first functional version
     * items database system
     * ordering system

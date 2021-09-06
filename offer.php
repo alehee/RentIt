@@ -11,7 +11,7 @@
     <head>
 
         <meta charset="utf-8"/>
-        <title>Rent It - Offer</title>
+        <title>Our offer - Rent It</title>
 
         <?php echo $def_Head ?>
 

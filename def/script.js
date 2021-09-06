@@ -1,6 +1,6 @@
 
 
-// Set loading modal attributes
+// Setting loading modal attributes
 $(document).ready(function(){
     $( '#wait-modal' ).modal({
         backdrop: 'static',
@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
 });
 
-// Header script
+// Header location script
 $( '#header-title' ).click(function(){
     window.location.href='index.php';
 });
