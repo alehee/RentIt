@@ -1,2 +1,10 @@
-* ** 0.0.1 ** --- in development
+* ** 1.0.0 ** --- in development
+
+* ** 0.1.0 ** --- in development
+
+* ** 0.0.1 ** --- 2021-09-06
     * first functional version
+    * items database system
+    * ordering system
+    * mailing system
+    * now you can use it for yourself! ;)
