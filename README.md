@@ -1,7 +1,7 @@
 # RentIt
 
 <p align="center">
-  <img src="https://github.com/alehee/RentIt/blob/main/_localhost/banner.png">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/banner.png">
 </p>
 
 ## Description
