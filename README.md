@@ -1,7 +1,7 @@
 # RentIt
 
 <p align="center">
-  <img src="https://github.com/alehee/androidDatabaseTester/blob/main/github-resources/banner.png">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localhost/banner.png">
 </p>
 
 ## Description
