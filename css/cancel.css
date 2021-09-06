@@ -1,2 +1,45 @@
 @import url("../def/style.css");
 
+#cancel-panel-h2, #cancel-panel-h4, #cancel-panel-h5{
+    font-weight: 600;
+    font-style: italic;
+}
+
+.cancel-panel-info-title, .cancel-panel-info-result{
+    font-size: large;
+    color: #79d279;
+}
+
+.cancel-panel-info-result{
+    color: black;
+}
+
+.cancel-panel-info-title{
+    font-size: x-large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#cancel-box{
+    margin: 0 auto;
+    width: 50%;
+    border: 2px solid gray;
+}
+
+#cancel-box-btn-box{
+    text-align: center;
+}
+
+.cancel-box-btn{
+    margin:0 10px;
+}
+
+.btn-cancel{
+    background-color: #79d279;
+    border: none;
+}
+
+.btn-cancel:hover, .btn-cancel:focus{
+    background-color: #39ac39;
+    border: none;
+}

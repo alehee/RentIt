@@ -69,20 +69,10 @@
             <!-- Add new item --->
 
             <!-- Edit item --->
-
-            <!-- Wait for the process modal -->
-            <div class="modal fade" id="admin-wait-modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="">WAIT FOR THE SYSTEM TO PROCESS</div>
-                            <div class=""><img src="img/loading.gif"/></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         
         </div>
+
+        <?php echo $def_Modals ?>
 
         <!-- Footer --->
         <?php echo $def_Footer ?>

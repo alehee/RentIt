@@ -88,7 +88,7 @@
         $connection = getConnection();
 
         // Add orders to array
-        $sql = "SELECT ORD.`Id`, ITE.`Name`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`Accept` IS NULL ORDER BY ORD.`OrderStart` ASC";
+        $sql = "SELECT ORD.`Id`, ITE.`Name`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`Accept` IS NULL AND ORD.`OrderEnd`>=CURDATE() ORDER BY ORD.`OrderStart` ASC";
         $que = mysqli_query($connection, $sql);
         while($res = mysqli_fetch_array($que)){
             array_push($toAccept, ["id"=>$res["Id"], "item"=>$res["Name"], "name"=>$res["OrderName"], "email"=>$res["OrderEmail"], "phone"=>$res["OrderPhone"], "start"=>$res["OrderStart"], "end"=>$res["OrderEnd"]]);
@@ -134,6 +134,37 @@
             echo "<td>".$order['phone']."</td>";
             echo "</tr>";
         }
+    }
+    /// ==========
+
+    /// Query: get all info to cancel
+    function query_GetCancelInfo($orderNumber){
+
+        $connection = getConnection();
+
+        echo '<div class="row w-75" style="margin: 0 auto;">';
+
+        // Display order info
+        $sql = "SELECT ORD.`Id`, ITE.`Name`, ORD.`OrderName`, ORD.`OrderStart`, ORD.`OrderEnd` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` WHERE ORD.`OrderNumber`='$orderNumber'";
+        $que = mysqli_query($connection, $sql);
+        while($res = mysqli_fetch_array($que)){
+            echo '<div class="col">';
+            echo '<div id="cancel-order-id" class="cancel-panel-info-title text-center pt-2" name="'.$res['Id'].'">ITEM</div>';
+            echo '<div class="cancel-panel-info-result text-center">'.$res['Name'].'</div>';
+            echo '<div class="cancel-panel-info-title text-center pt-2">START DATE</div>';
+            echo '<div class="cancel-panel-info-result text-center">'.$res['OrderStart'].'</div>';
+            echo '</div>';
+
+            echo '<div class="col">';
+            echo '<div class="cancel-panel-info-title text-center pt-2">NAME</div>';
+            echo '<div class="cancel-panel-info-result text-center">'.$res['OrderName'].'</div>';
+            echo '<div class="cancel-panel-info-title text-center pt-2">END DATE</div>';
+            echo '<div class="cancel-panel-info-result text-center">'.$res['OrderEnd'].'</div>';
+            echo '</div>';
+        }
+
+        echo '</div>';
+
     }
     /// ==========
 ?>

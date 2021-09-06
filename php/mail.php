@@ -35,6 +35,7 @@
                 $body_content['body'] .= '<div class="cont">Start: <b>'.$mail["order"]["start"].'</b></div>';
                 $body_content['body'] .= '<div class="cont">End: <b>'.$mail["order"]["end"].'</b></div>';
                 $body_content['body'] .= '<p class="cont">Our administrator will consider your order as soon as possible. Wait for the acceptation mail soon!</p>';
+                $body_content['body'] .= '<p class="cont">In case you change your mind click <a href="'.$website_url.'/cancel.php?order='.$mail["order"]["number"].'">here</a> to <span style="color:red;">cancel</span> the order.</p>';
             break;
             case "confirmation_admin":
                 $to = $admin_mail;
@@ -74,16 +75,26 @@
                 }
             break;
             case "cancelation":
-                $subject = "Subject";
-                $body_content["title"] = "";
+                $subject = "[RENT IT] Order ".$mail["order"]["number"]." has been cancelled";
+                $body_content["title"] = "We've got your cancellation for the <b>".$mail["order"]["number"]."</b> order.";
+                $body_content['body'] .= '<div class="cont">Item: <b>'.$mail["order"]["item"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">Start: <b>'.$mail["order"]["start"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">End: <b>'.$mail["order"]["end"].'</b></div>';
+                $body_content['body'] .= '<p class="cont">We\'re sorry to here that. Feel free to check our <a href="'.$website_url.'" target="_blank">offer</a> any time!</p>';
             break;
             case "cancelation_admin":
                 $to = $admin_mail;
-                $subject = "Subject";
-                $body_content["title"] = "";
+                $subject = "[RENT IT] Order ".$mail["order"]["number"]." has been cancelled";
+                $body_content["title"] = "Order <b>".$mail["order"]["number"]."</b> has been cancelled by user!";
+                $body_content['body'] .= '<div class="cont">Item: <b>'.$mail["order"]["item"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">Start: <b>'.$mail["order"]["start"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">End: <b>'.$mail["order"]["end"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">Name: <b>'.$mail["order"]["name"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">E-mail: <b>'.$mail["order"]["email"].'</b></div>';
+                $body_content['body'] .= '<div class="cont">Phone: <b>'.$mail["order"]["phone"].'</b></div>';
+                $body_content['body'] .= '<p class="cont">This order has been corrected in database and this item is now available again in database.</p>';
             break;
             default:
-
             break;
         }
 

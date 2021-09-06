@@ -168,4 +168,25 @@
         }
     }
     /// ==========
+
+    /// POST: cancel order
+    if(isset($_POST["cancelOrder"])){
+        $orderId = $_POST["cancelOrder"];
+        unset($_POST["cancelOrder"]);
+
+        try{
+            $connection = getConnection();
+
+            $sql = "UPDATE orders SET `Accept`='0' WHERE `Id`='$orderId'";
+            $que = mysqli_query($connection, $sql);
+
+            $sql = "INSERT INTO cancellations (`Id`, `IdOrder`) VALUES (default, '$orderId')";
+            $que = mysqli_query($connection, $sql);
+
+            echo json_encode(array("message"=>true));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage()));
+        }
+    }
+    /// ==========
 ?>

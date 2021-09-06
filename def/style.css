@@ -48,6 +48,25 @@ body{
     flex: 1;
 }
 
+#wait-modal{
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#wait-modal img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wait-modal-information{
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 10px;
+}
+
 footer{
     width:100%;
     font-size: x-small;

@@ -23,6 +23,22 @@ $def_Header = '
 ';
 /// ==========
 
+/// Set wait modal
+$def_Modals = '
+<div class="modal fade" id="wait-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="wait-modal-title">WAIT FOR THE SYSTEM TO PROCESS</div>
+                <div id="wait-modal-img"><img src="img/loading.gif"/></div>
+                <div id="wait-modal-information" class="text-center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+';
+/// ==========
+
 /// Set default footer variable
 $def_Footer = '
 <div style="clear:both;"></div>

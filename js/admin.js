@@ -1,20 +1,12 @@
 
 
-// Set loading modal attributes
-$(document).ready(function(){
-    $( '#admin-wait-modal' ).modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-});
-
 // Set acceptation status and send query
 $(document).on('click', '.admin-accept-btn', function(clicked){
     var decision = clicked.target.name;
     var target = $(this).closest('tr').attr('id').replace('admin_accept_', '');
     //console.log(decision+", "+target);
 
-    $( '#admin-wait-modal' ).modal('show');
+    $( '#wait-modal' ).modal('show');
 
     $.post( "php/post.php", { acceptOrder: {id: target, dec: decision} }, function( data ) {
         //console.log(data.message);
@@ -47,7 +39,7 @@ $(document).on('click', '.admin-accept-btn', function(clicked){
                         });
                         /// ==========
 
-                        $( '#admin-wait-modal' ).modal('hide');
+                        $( '#wait-modal' ).modal('hide');
                     }, "json");
                 }
             }, "json");
