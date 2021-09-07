@@ -9,11 +9,10 @@
     $headers = "From: $sender_host\r\n";
     $headers .= "Content-Type: text/html; charset=utf-8\r\n";
 
+    /// If area for mail handling
     if(isset($_POST["mail"])){
         $mail = $_POST["mail"];
         unset($_POST["mail"]);
-
-        //$mail = ["to"=>"aleksanderheesemail@gmail.com", "case"=>"acceptation", "order"=>["number"=>"4T42187468", "item"=>"Futsal Ball", "name"=>"Ale Hee", "email"=>"alehee@mail.com", "phone"=>"458105832", "start"=>"2021-09-04", "end"=>"2021-09-05", "accept"=>true]];
 
         $to = $mail["to"];
         $subject = "Rent It Subject";
@@ -110,5 +109,5 @@
             echo json_encode(array("message"=>$e->getMessage()));
         }
     }
-    
+    /// ==========
 ?>

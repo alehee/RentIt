@@ -5,7 +5,7 @@
 </p>
 
 ## Description
-*RentIt* is an universal web platform for rent-a-thing purposes written in PHP with Bootstrap and JQuery with admin control panel, easy to use UI and cool stuff like top lists. 
+*RentIt* is an universal web platform for rent-a-thing purposes written in PHP with Bootstrap and JQuery with admin control panel, easy to use UI and cool stuff like top lists. Manage your rental business with this light platform, create items to rent and let the platform handle the orders system. Users will be pleased with this solution!
 
 ## Used technology
 Langagues:
