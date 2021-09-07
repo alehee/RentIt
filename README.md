@@ -44,7 +44,7 @@ For the project I used this [MySQL Community Server](https://dev.mysql.com/downl
 
 What you should do next is import database structure to your database server to create tables templates. In project files find *database_structure.sql* and integrate it with your database. Now you should have *rentit* database in your schemas.
 
-Now you need to connect it with the website. Go to ** */php/connection.php* ** in project path and change your connection data so the script will be able to work with database.
+Now you need to connect it with the website. Go to ***/php/connection.php*** in project path and change your connection data so the script will be able to work with database.
 
 ```php
   function getConnection(){
@@ -62,7 +62,7 @@ Last thing you need to handle is mailing system. If you have your own hosting yo
 
 Whatever option you will choose you need to create e-mail which will be used to send messages from system. Of course if you use XAMPP you need also to complete little tutorial I wrote about in section above.
 
-The last step of configuring it is to change few lines in ** */php/mail.php* ** file. 
+The last step of configuring it is to change few lines in ***/php/mail.php*** file. 
 ```php
   /// Change this if you want to configure mail system
     $admin_mail = "cheese.software.mailing@gmail.com";    // <--- Change to e-mail address that should be used to send mails
