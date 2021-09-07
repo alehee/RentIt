@@ -1,7 +1,7 @@
 <?php
 
 /// Edit this with new versions
-$VERSION = "dev 0.1.0";
+$VERSION = "0.1.0";
 $cssUpdateVariable = "06092021";
 /// ==========
 

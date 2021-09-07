@@ -1,5 +1,4 @@
 <?php
-
     /// Change this if you want to configure mail system
     $admin_mail = "cheese.software.mailing@gmail.com";
     $website_url = "localhost/RentIt";
