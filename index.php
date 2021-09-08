@@ -1,6 +1,9 @@
 <?php
     // Request default php file
     require_once('def/def.php');
+
+    // Request query php file
+    require_once('php/query.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
             <?php echo $def_Header ?>
 
             <!-- Description --->
-            <div id="index-description" class="d-grid mx-auto py-3">
+            <div id="index-description" class="d-grid mx-auto pt-3 pb-2">
                 <img src="img/index.jpg" class="py-3"/>
                 <p>There's some place for your rental office description.</p>
                 <p>We're a small family rental office open for anyone who want to do sports without much cost.<br>
@@ -31,13 +34,24 @@
             </div>
 
             <!-- How much equipment --->
-
-            <!-- Navigation --->
-            <div class="d-grid col-4 mx-auto py-3">
-                <button id="index-btn-navi" type="button" class="btn btn-primary btn-rentit">Check full offer here</button>
+            <div id="index-basics" class="py-3">
+                <div id="index-basics-head" class="text-center">THERE'S SOME STATISTICS</div>
+                <div class="row w-75 text-center mx-auto">
+                    <?php query_GetIndexInfo('basics'); ?>
+                </div>
             </div>
 
             <!-- Rankings --->
+            <div id="index-ranking" class="pt-2 pb-3">
+                <div class="row text-center mx-auto">
+                    <?php query_GetIndexInfo('rankings'); ?>
+                </div>
+            </div>
+
+            <!-- Navigation --->
+            <div class="d-grid col-5 mx-auto py-4">
+                <button id="index-btn-navi" type="button" class="btn btn-primary btn-rentit p-3">Check full offer here</button>
+            </div>
 
         </div>
 

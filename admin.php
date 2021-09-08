@@ -41,9 +41,10 @@
             <div style="clear:both"></div>
 
             <!-- Main information shortcut --->
+            <h2 class="admin-title d-grid mx-auto pt-4">STATISTICS</h2>
 
             <!-- Requests to accept --->
-            <h2 class="admin-accept-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
+            <h2 class="admin-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
             <table id="admin-accept-list" class="table table-striped">
                 <thead>
                     <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th><th scope="col">Decision</th></tr>
@@ -54,7 +55,7 @@
             </table>
 
             <!-- Next three days events (start/end of order) --->
-            <h2 class="admin-accept-title d-grid mx-auto pt-4">UPCOMING/ENDING ORDERS</h2>
+            <h2 class="admin-title d-grid mx-auto pt-4">UPCOMING/ENDING ORDERS</h2>
             <table id="admin-upcoming-list" class="table table-striped">
                 <thead>
                     <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th></tr>
@@ -65,10 +66,13 @@
             </table>
 
             <!-- Full list of orders --->
+            <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
 
             <!-- Add new item --->
+            <h2 class="admin-title d-grid mx-auto pt-4">ADD NEW ITEM</h2>
 
             <!-- Edit item --->
+            <h2 class="admin-title d-grid mx-auto pt-4">EDIT ITEM</h2>
         
         </div>
 

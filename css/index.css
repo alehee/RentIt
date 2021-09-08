@@ -11,3 +11,44 @@
     margin-right: auto;
     width: 50%;
 }
+
+#index-basics-head{
+    font-size: large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.index-basics-title{
+    font-size: x-large;
+    font-weight: 600;
+    font-style: italic;
+    width: 100%;
+}
+
+.index-basics-count{
+    font-size: xx-large;
+    font-weight: 800;
+    color: #79d279;
+}
+
+.index-rankings-title, .index-rankings-result{
+    font-size: large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.index-rankings-title{
+    color: #79d279;
+}
+
+.index-rankings-result{
+    font-size: x-large;
+}
+
+#index-btn-navi{
+    background-color: #79d279;
+}
+
+#index-btn-navi:hover{
+    background-color: #39ac39;
+}

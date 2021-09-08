@@ -65,13 +65,13 @@ Whatever option you will choose you need to create e-mail which will be used to 
 The last step of configuring it is to change few lines in ***/php/mail.php*** file. 
 ```php
   /// Change this if you want to configure mail system
-    $admin_mail = "your-mail@gmail.com";                  // <--- Change to e-mail address that should be used to send mails
-    $website_url = "localhost/RentIt";                    // <--- Change to your website 'home' location that users will be redirected with e-mail links
-    $sender_host = "no-reply@gmail.com";                  // <--- Change if you want to use no-reply function on your e-mail account or DELETE IT if you don't know how it works!
+    $admin_mail = "your-mail@gmail.com";    // <--- Change to e-mail address that should be used to send mails
+    $website_url = "localhost/RentIt";      // <--- Change to your website 'home' location that users will be redirected with e-mail links
+    $sender_host = "no-reply@gmail.com";    // <--- Change if you want to use no-reply function on your e-mail account or DELETE IT if you don't know how it works!
     /// ==========
 ```
 
-** Congratulations! Now your rental portal should be good to go! **
+**Congratulations! Now your rental portal should be good to go!**
 
 ## Changelog
 What's new with the project? Here's the list:

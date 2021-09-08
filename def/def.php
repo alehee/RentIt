@@ -1,8 +1,8 @@
 <?php
 
 /// Edit this with new versions
-$VERSION = "0.1.0";
-$cssUpdateVariable = "06092021";
+$VERSION = "dev 1.0.0";
+$cssUpdateVariable = "08092021";
 /// ==========
 
 /// jQuery, Bootstrap linked

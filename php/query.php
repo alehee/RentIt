@@ -167,4 +167,55 @@
 
     }
     /// ==========
+
+    /// Query: get info for index.php page
+    function query_GetIndexInfo($function){
+
+        $connection = getConnection();
+
+        switch($function){
+            case 'basics':
+                $sql = "SELECT (SELECT COUNT(`Id`) FROM subcategories) AS Genres, (SELECT COUNT(`Id`) FROM items) AS Items, (SELECT COUNT(`Id`) FROM orders) AS Orders, (SELECT COUNT(`Id`) FROM orders WHERE `Accept`='1' OR `Accept` IS NULL) AS Completed;";
+                $que = mysqli_query($connection, $sql);
+                while($res = mysqli_fetch_array($que)){
+                    echo '<div class="col">';
+                    echo '<div class="index-basics-title">ITEM GENRES: <span class="index-basics-count">'.$res["Genres"].'</span></div>';
+                    echo '<div class="index-basics-title">ITEMS ON STOCK: <span class="index-basics-count">'.$res["Items"].'</span></div>';
+                    echo '</div>';
+                    echo '<div class="col">';
+                    echo '<div class="index-basics-title">ORDERS IN SYSTEM: <span class="index-basics-count">'.$res["Orders"].'</span></div>';
+                    echo '<div class="index-basics-title">ORDERS IN PROGRESS: <span class="index-basics-count">'.$res["Completed"].'</span></div>';
+                    echo '</div>';
+                }
+            break;
+            case 'rankings':
+                $popular = '-';
+                $newest = '-';
+                $latest = '-';
+
+                $sql = "SELECT (SELECT I.`Name` FROM (SELECT `IdItem`, COUNT(*) AS Times FROM orders GROUP BY `IdItem` ORDER BY `Times` DESC) AS M LEFT JOIN items AS I ON M.`IdItem`=I.`Id` LIMIT 1) AS Popular, (SELECT `Name` FROM items ORDER BY `Timestamp` DESC LIMIT 1) AS Newest, (SELECT I.`Name` FROM orders AS O LEFT JOIN items AS I ON O.`IdItem`=I.`Id` ORDER BY O.`OrderTimestamp` DESC LIMIT 1) AS Latest";
+                $que = mysqli_query($connection, $sql);
+                while($res = mysqli_fetch_array($que)){
+                    $popular = $res["Popular"];
+                    $newest = $res["Newest"];
+                    $latest = $res["Latest"];
+                }
+
+                echo '<div class="col">';
+                echo '<div class="index-rankings-title">MOST POPULAR ITEM</div>';
+                echo '<div class="index-rankings-result">'.$popular.'</div>';
+                echo '</div>';
+                echo '<div class="col">';
+                echo '<div class="index-rankings-title">NEWEST ITEM</div>';
+                echo '<div class="index-rankings-result">'.$newest.'</div>';
+                echo '</div>';
+                echo '<div class="col">';
+                echo '<div class="index-rankings-title">LAST ORDERED ITEM</div>';
+                echo '<div class="index-rankings-result">'.$latest.'</div>';
+                echo '</div>';
+            break;
+        }
+
+    }
+    /// ==========
 ?>
