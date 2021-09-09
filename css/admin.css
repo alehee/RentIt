@@ -19,6 +19,19 @@
     color: gray;
 }
 
+.admin-basics-title{
+    font-size: x-large;
+    font-weight: 600;
+    font-style: italic;
+    width: 100%;
+}
+
+.admin-basics-count{
+    font-size: xx-large;
+    font-weight: 800;
+    color: #79d279;
+}
+
 #admin-accept-list .admin-accept-btn-yes{
     font-size: small;
     background-color: green;
@@ -42,6 +55,16 @@
     margin: 10px 10%;
     font-size: small;
     text-align: center;
+}
+
+#admin-additem-banner{
+    background-color: #79d279;
+    color: white;
+}
+
+#admin-additem-banner:hover{
+    cursor: pointer;
+    background-color: #39ac39;
 }
 
 #admin-wait-modal{

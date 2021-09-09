@@ -42,6 +42,9 @@
 
             <!-- Main information shortcut --->
             <h2 class="admin-title d-grid mx-auto pt-4">STATISTICS</h2>
+            <div class="row text-center mx-auto">
+                <?php query_GetAdminBasics(); ?>
+            </div>
 
             <!-- Requests to accept --->
             <h2 class="admin-title d-grid mx-auto pt-4">ORDERS TO ACCEPT</h2>
@@ -69,7 +72,14 @@
             <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
 
             <!-- Add new item --->
-            <h2 class="admin-title d-grid mx-auto pt-4">ADD NEW ITEM</h2>
+            <h2 class="admin-title d-grid mx-auto pt-4">ADD CATEGORY/SUBCATEGORY/ITEM</h2>
+            <form action="post.php" method="post">
+                <div id="admin-additem-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit">ADD NEW ITEM</div>
+                <div id="admin-additem">
+                    <input type="text" name="logout"/>
+                    <button id="admin-btn-additem" type="submit" class="btn btn-primary btn-rentit">Add item</button>
+                </div>
+            </form>
 
             <!-- Edit item --->
             <h2 class="admin-title d-grid mx-auto pt-4">EDIT ITEM</h2>

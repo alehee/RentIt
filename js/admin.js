@@ -41,3 +41,8 @@ $(document).on('click', '.admin-accept-btn', function(clicked){
         }
     }, "json");
 });
+
+// Open ADD ITEM div
+$(document).on('click', '#admin-additem-banner', function(clicked){
+    $( '#admin-additem' ).slideToggle();
+});

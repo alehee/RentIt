@@ -218,4 +218,35 @@
 
     }
     /// ==========
+
+    /// Query: get basic info for admin.php page
+    function query_GetAdminBasics(){
+        $connection = getConnection();
+
+        $sql = "SELECT (SELECT COUNT(`Id`) FROM orders) AS Orders, (SELECT COUNT(`Id`) FROM orders WHERE `Accept`='1' AND `OrderEnd`<=CURDATE()) AS Completed, (SELECT COUNT(`Id`) FROM orders WHERE `Accept` IS NULL AND `OrderEnd`>=CURDATE()) AS Waiting";
+        $que = mysqli_query($connection, $sql);
+        while($res = mysqli_fetch_array($que)){
+            echo '<div class="col">';
+            echo '<div class="admin-basics-title">TOTAL ORDERS IN SYSTEM: <span class="admin-basics-count">'.$res["Orders"].'</span></div>';
+            echo '<div class="admin-basics-title">ORDERS IN PROGRESS: <span class="admin-basics-count">'.$res["Completed"].'</span></div>';
+            echo '</div>';
+            echo '<div class="col">';
+            echo '<div class="admin-basics-title">WAITING FOR ACCEPT: <span class="admin-basics-count">'.$res["Waiting"].'</span></div>';
+            echo '</div>';
+        }
+    }
+    /// ==========
+
+    /// Query: get direct info about database for admin.php page
+    function query_GetAdminInfo($info){
+        $connection = getConnection();
+
+        switch($info){
+            case '':
+            
+            break;
+        }
+
+    }
+    /// ==========
 ?>
