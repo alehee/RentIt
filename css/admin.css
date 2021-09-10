@@ -57,14 +57,37 @@
     text-align: center;
 }
 
-#admin-additem-banner{
+.admin-add-banner{
     background-color: #79d279;
     color: white;
 }
 
-#admin-additem-banner:hover{
+.admin-add-banner:hover{
     cursor: pointer;
     background-color: #39ac39;
+}
+
+.admin-add-div{
+    width: 75%;
+    max-width: 750px;
+    margin: 0 auto;
+    margin-top: 0.5%;
+    margin-bottom: 2%;
+    text-align: center;
+    font-size: small;
+}
+
+.admin-add-div button{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.admin-add-div span{
+    padding-left: 10px;
+}
+
+.admin-add-div label{
+    padding-right: 10px;
 }
 
 #admin-wait-modal{
@@ -78,4 +101,20 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn-red{
+    background-color: red;
+}
+
+.btn-red:hover{
+    background-color: darkred;
+}
+
+.btn-grn{
+    background-color: #79d279;
+}
+
+.btn-grn:hover{
+    background-color: #39ac39;
 }
