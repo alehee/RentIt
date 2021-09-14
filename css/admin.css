@@ -60,6 +60,7 @@
 .admin-add-banner{
     background-color: #79d279;
     color: white;
+    margin-bottom: 10px;
 }
 
 .admin-add-banner:hover{
@@ -75,6 +76,7 @@
     margin-bottom: 2%;
     text-align: center;
     font-size: small;
+    display: none;
 }
 
 .admin-add-div button{
@@ -88,19 +90,6 @@
 
 .admin-add-div label{
     padding-right: 10px;
-}
-
-#admin-wait-modal{
-    text-align: center;
-    font-size: large;
-    font-weight: 600;
-    font-style: italic;
-}
-
-#admin-wait-modal img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .btn-red{
@@ -117,4 +106,26 @@
 
 .btn-grn:hover{
     background-color: #39ac39;
+}
+
+#admin-conf-cat, #admin-conf-subcat{
+    display: none;
+}
+
+#admin-btn-additem{
+    margin: 5px auto;
+    border-radius: 5px;
+}
+
+#admin-wait-modal{
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#admin-wait-modal img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

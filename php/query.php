@@ -242,8 +242,20 @@
         $connection = getConnection();
 
         switch($info){
-            case '':
-            
+            case 'getSelectCategories':
+                $sql = "SELECT `Id`, `Name` FROM categories ORDER BY `Id` ASC";
+                $que = mysqli_query($connection, $sql);
+                while($res = mysqli_fetch_array($que)){
+                    echo '<option value="'.$res["Id"].'">'.$res["Name"].'</option>';
+                }
+            break;
+
+            case 'getSelectSubcategories':
+                $sql = "SELECT `Id`, `Name` FROM subcategories ORDER BY `Id` ASC";
+                $que = mysqli_query($connection, $sql);
+                while($res = mysqli_fetch_array($que)){
+                    echo '<option value="'.$res["Id"].'">'.$res["Name"].'</option>';
+                }
             break;
         }
 

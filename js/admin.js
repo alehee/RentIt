@@ -42,7 +42,23 @@ $(document).on('click', '.admin-accept-btn', function(clicked){
     }, "json");
 });
 
-// Open ADD ITEM div
-$(document).on('click', '#admin-additem-banner', function(clicked){
-    $( '#admin-additem' ).slideToggle();
+// Open ADD smthg divs
+$(document).on('click', '.admin-add-banner', function(clicked){
+    var target = $(this).attr('id').replace('-banner', '');
+    //alert(target);
+    $( '#'+target ).slideToggle();
+});
+
+// Open CONFIRM DELETE divs
+$(document).on('click', '.admin-btn-conf', function(clicked){
+    var target = $(this).attr('id').replace('admin-btn-', '');
+    //alert(target);
+    switch(target){
+        case 'delcategory':
+            $( '#admin-conf-cat' ).slideToggle();
+        break;
+        case 'delsubcategory':
+            $( '#admin-conf-subcat' ).slideToggle();
+        break;
+    }
 });

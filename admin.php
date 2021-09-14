@@ -75,62 +75,57 @@
             <h2 class="admin-title d-grid mx-auto pt-4">ADD CATEGORY/SUBCATEGORY/ITEM</h2>
             <div id="admin-addcategory-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE CATEGORY</div>
             <div id="admin-addcategory" class="admin-add-div">
-                <form action="edit.php" method="post" class="input-group">
+                <form action="php/edit.php" method="post" class="input-group">
                     <input type="text" name="add-cat" class="form-control" placeholder="Enter category name to add">
                     <button id="admin-btn-addcategory" type="submit" class="btn btn-primary btn-rentit btn-grn">Add category</button>
                 </form>
                 <hr/>
-                <form action="edit.php" method="post" class="input-group">
+                <form action="php/edit.php" method="post" class="input-group">
                     <select class="form-select form-select" name="del-cat">
-                        <option selected>Select category to delete</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="0" selected>Select category to delete</option>
+                        <?php query_GetAdminInfo('getSelectCategories'); ?>
                     </select>
-                    <button id="admin-btn-delcategory" type="submit" class="btn btn-primary btn-rentit btn-red">Delete category</button><span id="admin-conf-cat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button><button id="admin-conf-cat-no" class="btn btn-primary btn-rentit btn-red">No</button></span>
+                    <div id="admin-btn-delcategory" class="btn btn-primary btn-rentit btn-red admin-btn-conf">Delete category</div><span id="admin-conf-cat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button></span>
                 </form>
             </div>
             <div id="admin-addsubcategory-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE SUBCATEGORY</div>
             <div id="admin-addsubcategory" class="admin-add-div">
-                <form action="edit.php" method="post" class="input-group">
+                <form action="php/edit.php" method="post" class="input-group">
                     <select class="form-select form-select" name="add-subcat-cat">
-                        <option selected>Select category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="0" selected>Select category</option>
+                        <?php query_GetAdminInfo('getSelectCategories'); ?>
                     </select>
                     <input type="text" name="add-subcat" class="form-control" placeholder="Enter subcategory name">
                     <button id="admin-btn-addsubcategory" type="submit" class="btn btn-primary btn-rentit btn-grn">Add subcategory</button>
                 </form>
                 <hr/>
-                <form action="edit.php" method="post" class="input-group">
+                <form action="php/edit.php" method="post" class="input-group">
                     <select class="form-select form-select" name="del-subcat">
-                        <option selected>Select subcategory to delete</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="0" selected>Select subcategory to delete</option>
+                        <?php query_GetAdminInfo('getSelectSubcategories'); ?>
                     </select>
-                    <button id="admin-btn-delsubcategory" class="btn btn-primary btn-rentit btn-red">Delete subcategory</button><span id="admin-conf-subcat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button><button id="admin-conf-subcat-no" class="btn btn-primary btn-rentit btn-red">No</button></span>
+                    <div id="admin-btn-delsubcategory" class="btn btn-primary btn-rentit btn-red admin-btn-conf">Delete subcategory</div><span id="admin-conf-subcat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button></span>
                 </form>
             </div>
             <div id="admin-additem-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD NEW ITEM</div>
             <div id="admin-additem" class="admin-add-div">
-                <form action="edit.php" method="post" class="input-group">
+                <form action="php/edit.php" method="post" class="input-group" enctype="multipart/form-data">
                     <div class="input-group">
                         <select class="form-select form-select" name="add-item-subcat">
                             <option selected>Select subcategory for item</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <?php query_GetAdminInfo('getSelectSubcategories'); ?>
                         </select>
-                        <input type="text" name="add-item-name" class="form-control" placeholder="Enter item name">
+                        <input type="text" name="add-item-name" class="form-control" placeholder="Enter item name" required>
+                        <input type="number" name="add-item-stock" class="form-control" placeholder="How many on stock" required>
                     </div>
                     <div class="input-group">
-                        <textarea name="add-item-description" class="form-control" placeholder="Enter description for item"></textarea>
+                        <textarea name="add-item-description" class="form-control" placeholder="(Optional) Enter description for item"></textarea>
                     </div>
                     <div class="input-group">
-                        <label class="form-label">Photo</label>
-                        <input name="add-item-file" class="form-control" type="file">
+                        (Optional) Upload photo of the item
+                    </div>
+                    <div class="input-group">
+                        <input id="add-item-file" name="add-item-file" class="form-control" type="file">
                     </div>
                     <button id="admin-btn-additem" type="submit" class="btn btn-primary btn-rentit btn-grn">Add item</button>
                 </form>
