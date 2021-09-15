@@ -189,4 +189,67 @@
         }
     }
     /// ==========
+
+    /// POST: get history for admin.php
+    if(isset($_POST["getHistory"])){
+        unset($_POST["getHistory"]);
+
+        try{
+            $connection = getConnection();
+
+            $returnHistory = [];
+
+            $sql = "SELECT ITE.`Name`, ORD.`OrderNumber`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd`, ORD.`OrderTimestamp`, ORD.`Accept` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` ORDER BY ORD.`OrderStart` DESC";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                if($res["Accept"]=="1")
+                    $orderAccept = 'Yes';
+                else
+                    $orderAccept = 'No';
+
+                array_push($returnHistory, ['timestamp'=>$res['OrderTimestamp'], 'number'=>$res["OrderNumber"], 'item'=>$res["Name"], 'start'=>$res["OrderStart"], 'end'=>$res["OrderEnd"], 'name'=>$res["OrderName"], 'email'=>$res["OrderEmail"], 'phone'=>$res["OrderPhone"], 'accept'=>$orderAccept]);
+            }
+
+            echo json_encode(array("message"=>true, "history"=>$returnHistory));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage(), "history"=>null));
+        }
+    }
+    /// ==========
+
+    /// POST: get items edit module for admin.php
+    if(isset($_POST["getItemsEdit"])){
+        unset($_POST["getItemsEdit"]);
+
+        try{
+            $connection = getConnection();
+
+            $returnCategories = [];
+            $returnSubcategories = [];
+            $returnItems = [];
+
+            $sql = "SELECT `Id`, `Name` FROM categories ORDER BY `Id` ASC";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                array_push($returnCategories, ['id'=>$res['Id'], 'name'=>$res['Name']]);
+            }
+
+            $sql = "SELECT `Id`, `IdCategory`, `Name` FROM subcategories ORDER BY `Id` ASC";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                array_push($returnSubcategories, ['id'=>$res['Id'], 'idCategory'=>$res['IdCategory'], 'name'=>$res['Name']]);
+            }
+
+            $sql = "SELECT `Id`, `IdSubcategory`, `Name`, `Description`, `OnStock` FROM items ORDER BY `Id` ASC";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                array_push($returnItems, ['id'=>$res['Id'], 'idSubcategory'=>$res['IdSubcategory'], 'name'=>$res['Name'], 'description'=>$res['Description'], 'stock'=>$res['OnStock']]);
+            }
+
+            echo json_encode(array("message"=>true, "categories"=>$returnCategories, "subcategories"=>$returnSubcategories, "items"=>$returnItems));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage(), "categories"=>null, "subcategories"=>null, "items"=>null));
+        }
+    }
+    /// ==========
 ?>

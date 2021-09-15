@@ -261,4 +261,23 @@
 
     }
     /// ==========
+
+    /// Query: get info for offer.php nutshell module
+    function query_GetOfferInfo(){
+
+        $connection = getConnection();
+
+        $sql = "SELECT (SELECT COUNT(`Id`) FROM items) AS Total, (SELECT COUNT(`Id`) FROM orders) AS Orders";
+        $que = mysqli_query($connection, $sql);
+         while($res = mysqli_fetch_array($que)){
+            echo '<div class="col">';
+            echo '<div class="offer-basics-title">TOTAL ITEMS: <span class="offer-basics-count">'.$res["Total"].'</span></div>';
+            echo '</div>';
+            echo '<div class="col">';
+            echo '<div class="offer-basics-title">ORDERS IN SYSTEM: <span class="offer-basics-count">'.$res["Orders"].'</span></div>';
+            echo '</div>';
+        }
+
+    }
+    /// ==========
 ?>

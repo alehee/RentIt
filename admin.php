@@ -70,6 +70,9 @@
 
             <!-- Full list of orders --->
             <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
+            <div id="admin-history-main">
+                
+            </div>
 
             <!-- Add new item --->
             <h2 class="admin-title d-grid mx-auto pt-4">ADD CATEGORY/SUBCATEGORY/ITEM</h2>

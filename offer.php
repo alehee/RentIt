@@ -26,9 +26,14 @@
             <?php echo $def_Header ?>
 
             <!-- Nutshell of the items information --->
+            <h2 id="offer-h2-title" class="d-grid mx-auto pt-4">THAT'S OUR GEAR!</h2>
+            <div id="offer-basics">
+                <div class="row w-75 text-center mx-auto">
+                    <?php query_GetOfferInfo(); ?>
+                </div>
+            </div>
 
             <!-- Items list with categories etc --->
-            <h2 id="offer-h2-title" class="d-grid mx-auto pt-4">THAT'S OUR GEAR!</h2>
             <div id="offer-list" class="d-grid mx-auto py-3 p-1 rounded container">
                 <div class="row">
                     <div class="col">

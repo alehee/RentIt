@@ -1,5 +1,3 @@
-
-
 // Setting loading modal attributes
 $(document).ready(function(){
     $( '#wait-modal' ).modal({

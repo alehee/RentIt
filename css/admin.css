@@ -57,6 +57,28 @@
     text-align: center;
 }
 
+#admin-history-main{
+    width: 80%;
+    margin: 10px 10%;
+    font-size: small;
+    text-align: center;
+}
+
+.admin-history-month-banner{
+    font-weight: 600;    
+    font-style: italic;
+    background-color: #e6b800;
+    width: 100%;
+}
+
+.admin-history-month-banner:hover{
+    background-color: #cca300;
+}
+
+#admin-history-main table{
+    display: none;
+}
+
 .admin-add-banner{
     background-color: #79d279;
     color: white;

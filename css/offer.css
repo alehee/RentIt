@@ -8,6 +8,19 @@
     color: gray;
 }
 
+.offer-basics-title{
+    font-size: x-large;
+    font-weight: 600;
+    font-style: italic;
+    width: 100%;
+}
+
+.offer-basics-count{
+    font-size: xx-large;
+    font-weight: 800;
+    color: #79d279;
+}
+
 #offer-list{
     width: 90%;
     border: 2px solid gray;

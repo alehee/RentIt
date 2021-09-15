@@ -1,4 +1,13 @@
 * ** 1.0.0 ** --- in development
+    * INDEX PAGE:
+        * added basic statistics
+        * added 'best of' module
+    * OFFER:
+        * added bar with statistics
+    * ADMIN:
+        * added bar with statistics
+        * added ability to add/delete categories and subcategories
+        * added 'add new item' module
 
 * ** 0.1.0 ** --- in development
     * code cleanup and docs writing
