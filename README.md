@@ -36,6 +36,8 @@ There's two ways: you can download the master branch with code, check how it's w
 ## Installation
 Installation proces of the main features is very easy, but there's some steps that requires more attention.
 
+**With version 1.0.0 new *database_structure.sql* file was uploaded. Remember to update it if you used previous one!**
+
 ### 1. Website files
 Simply upload website files to your server or use it with XAMPP. It's the easiest part because all the files you need to run it are in project.
 

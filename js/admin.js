@@ -145,6 +145,7 @@ $(document).on('click', '.admin-edit-btn-edit', function(clicked){
     var target = $(this).attr('name');
 
     $.post( "php/post.php", { editItemData: target }, function( data ) {
+        $( '#edit-item-id' ).val(target);
         $( '#edit-item-name' ).val(data.name);
         $( '#edit-item-description' ).text(data.description);
         $( '#edit-item-stock' ).val(data.onstock);
@@ -168,12 +169,11 @@ $(document).on('click', '.admin-edit-btn-remove', function(clicked){
 // Run remove script
 $(document).on('click', '.admin-edit-btn-remove-conf', function(clicked){
     var target = $(this).attr('name');
-    //alert(target);
 
     $( '#wait-modal' ).modal('show');
 
-    $.post( "php/post.php", { delItem: target }, function( data ) {
-        
+    $.post( "php/edit.php", { delItem: target }, function( data ) {
+        location.reload();
     }, "json");
 });
 

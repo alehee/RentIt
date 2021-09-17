@@ -68,11 +68,6 @@
                 </tbody>
             </table>
 
-            <!-- Full list of orders --->
-            <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
-            <div id="admin-history-main">  
-            </div>
-
             <!-- Add new item --->
             <h2 class="admin-title d-grid mx-auto pt-4">ADD CATEGORY/SUBCATEGORY/ITEM</h2>
             <div id="admin-addcategory-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE CATEGORY</div>
@@ -143,6 +138,11 @@
             <div id="admin-edit-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-toggle">EDIT ITEMS</div>
             <div id="admin-edit">
             </div>
+
+            <!-- History of orders --->
+            <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
+            <div id="admin-history-main">  
+            </div>
         
         </div>
 
@@ -156,6 +156,7 @@
                     <div class="modal-body">
                         <form action="php/edit.php" method="post" class="input-group" enctype="multipart/form-data">
                             <div class="input-group">
+                                <input id="edit-item-id" type="hidden" name="edit-item-id" class="form-control" value="">
                                 <select id="edit-item-subcat" class="form-select form-select" name="edit-item-subcat"></select>
                                 <input id="edit-item-name" type="text" name="edit-item-name" class="form-control" placeholder="Enter item name" required>
                                 <input id="edit-item-stock" type="number" name="edit-item-stock" class="form-control" placeholder="How many on stock" required>

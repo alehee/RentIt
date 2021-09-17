@@ -24,7 +24,7 @@ $(document).on('click', '.offer-header-item', function(clicked){
 
         var photo = data.photo;
         if(photo != false)
-            $( '#offer-list-image' ).attr('src', 'photo/'+photo);
+            $( '#offer-list-image' ).attr('src', 'photo/'+photo+'?t='+new Date().getTime());
         else
             $( '#offer-list-image' ).attr('src', 'img/no-image.png');
     }, "json");

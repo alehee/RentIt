@@ -199,9 +199,18 @@
 
             $returnHistory = [];
 
-            $sql = "SELECT ITE.`Name`, ORD.`OrderNumber`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd`, ORD.`OrderTimestamp`, ORD.`Accept` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` ORDER BY ORD.`OrderStart` DESC";
+            $sql = "SELECT ITE.`Name`, ORD.`OrderNumber`, ORD.`OrderName`, ORD.`OrderEmail`, ORD.`OrderPhone`, ORD.`OrderStart`, ORD.`OrderEnd`, ORD.`OrderTimestamp`, ORD.`Accept`, ORD.`IdItem` FROM orders AS ORD LEFT JOIN items AS ITE ON ORD.`IdItem`=ITE.`Id` ORDER BY ORD.`OrderStart` DESC";
             $que = mysqli_query($connection, $sql);
             while($res = mysqli_fetch_array($que)){
+                if($res["Name"]==null){
+                    $tempId = $res["IdItem"];
+                    $sql = "SELECT `Name` FROM deleteditems WHERE `IdItem`='$tempId'";
+                    $tempque = mysqli_query($connection, $sql);
+                    while($tempres = mysqli_fetch_array($tempque)){
+                        $res["Name"]=$tempres["Name"];
+                    }
+                }
+
                 if($res["Accept"]=="1")
                     $orderAccept = 'Yes';
                 else

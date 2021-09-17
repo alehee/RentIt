@@ -122,22 +122,63 @@
     /// ==========
 
     /// POST: delete item
-    if(isset($_POST["del-item"])){
-        $itemId = $_POST["del-item"];
-        unset($_POST["del-item"]);
+    if(isset($_POST["delItem"])){
+        $itemId = $_POST["delItem"];
+        unset($_POST["delItem"]);
 
-        
+        $connection = getConnection();
 
-        //header("Refresh:0; url=../admin.php");
+        $itemName = '';
+        $sql = "SELECT `Name` FROM items WHERE `Id`='$itemId' LIMIT 1";
+        $que = mysqli_query($connection, $sql);
+        while($res = mysqli_fetch_array($que)){
+            $itemName = $res["Name"];
+        }
+
+        $sql = "INSERT INTO deleteditems (`Id`, `IdItem`, `Name`) VALUES (default, '$itemId', '$itemName')";
+        $que = mysqli_query($connection, $sql);
+
+        $sql = "DELETE FROM items WHERE `Id`='$itemId'";
+        $que = mysqli_query($connection, $sql);
+
+        echo json_encode(array("message"=>true));
     }
     /// ==========
 
     /// POST: edit item
-    if(isset($_POST["edit-item"])){
+    if(isset($_POST["edit-item-name"])){
+        $itemId = $_POST["edit-item-id"];
+        $itemSubcatId = $_POST["edit-item-subcat"];
+        $itemName = $_POST["edit-item-name"];
+        $itemStock = intval($_POST["edit-item-stock"]);
+        $itemDescription = $_POST["edit-item-description"];
+        unset($_POST["edit-item-id"]);
+        unset($_POST["edit-item-subcat"]);
+        unset($_POST["edit-item-name"]);
+        unset($_POST["edit-item-stock"]);
+        unset($_POST["edit-item-description"]);
 
-        
+        echo $itemId.", ".$itemSubcatId.", ".$itemName.", ".$itemStock.", ".$itemDescription;
 
-        //header("Refresh:0; url=../admin.php");
+        if($itemName!="" && $itemSubcatId!="0"){
+            $connection = getConnection();
+
+            $sql = "UPDATE items SET `IdSubcategory`='$itemSubcatId', `Name`='$itemName', `Description`='$itemDescription', `OnStock`='$itemStock' WHERE `Id`='$itemId'";
+            $que = mysqli_query($connection, $sql);
+
+            try{
+                $target_dir = "../photo/";
+                $target_file = $target_dir.$itemId.".".end((explode(".", $_FILES["edit-item-file"]["name"])));
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                move_uploaded_file($_FILES["edit-item-file"]["tmp_name"], $target_file);
+            }catch(Exception $e) {
+                //echo $e->getMessage();
+            }
+        }
+
+        header("Refresh:0; url=../admin.php");
     }
     /// ==========
 ?>

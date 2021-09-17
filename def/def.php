@@ -2,7 +2,7 @@
 
 /// Edit this with new versions
 $VERSION = "dev 1.0.0";
-$cssUpdateVariable = "08092021";
+$cssUpdateVariable = "17092021";
 /// ==========
 
 /// jQuery, Bootstrap linked
