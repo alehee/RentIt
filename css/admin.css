@@ -83,6 +83,7 @@
     background-color: #79d279;
     color: white;
     margin-bottom: 10px;
+    width: 80%;
 }
 
 .admin-add-banner:hover{
@@ -91,7 +92,7 @@
 }
 
 .admin-add-div{
-    width: 75%;
+    width: 80%;
     max-width: 750px;
     margin: 0 auto;
     margin-top: 0.5%;
@@ -137,6 +138,73 @@
 #admin-btn-additem{
     margin: 5px auto;
     border-radius: 5px;
+}
+
+#admin-edit-banner{
+    background-color: #6600cc;
+}
+
+#admin-edit-banner:hover{
+    background-color: #5900b3;
+}
+
+#admin-edit-banner, #admin-edit{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1%;
+}
+
+#admin-edit{
+    display: none;
+}
+
+.admin-edit-category, .admin-edit-subcategory, .admin-edit-item{
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    text-align: center;
+    font-size: small;
+    display: none;
+}
+
+.admin-edit-category{
+    background-color: #8000ff;
+}
+
+.admin-edit-category:hover{
+    background-color: #7300e6;
+}
+
+.admin-edit-subcategory{
+    background-color: #9933ff;
+}
+
+.admin-edit-subcategory:hover{
+    background-color: #8c1aff;
+}
+
+.admin-edit-item{
+    background-color: #b366ff;
+}
+
+.admin-edit-item:hover{
+    background-color: #9933ff;
+}
+
+.admin-edit-category-body, .admin-edit-subcategory-body, .admin-edit-item-body{
+    display: none;
+}
+
+.admin-edit-item-body{
+    background-color: #cccccc;
+    margin-top: -1%;
+}
+
+.admin-edit-item-body span{
+    display: none;
+}
+
+#edit-item-file-info{
+    font-size: small;
 }
 
 #admin-wait-modal{

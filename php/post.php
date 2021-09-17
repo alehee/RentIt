@@ -224,31 +224,83 @@
         try{
             $connection = getConnection();
 
-            $returnCategories = [];
-            $returnSubcategories = [];
-            $returnItems = [];
+            $returnArray = [];
+            $subcategoriesCategories = [];
 
             $sql = "SELECT `Id`, `Name` FROM categories ORDER BY `Id` ASC";
             $que = mysqli_query($connection, $sql);
             while($res = mysqli_fetch_array($que)){
-                array_push($returnCategories, ['id'=>$res['Id'], 'name'=>$res['Name']]);
+                $returnArray[$res['Id']]=['name'=>$res['Name'], 'subcategories'=>[]];
             }
 
             $sql = "SELECT `Id`, `IdCategory`, `Name` FROM subcategories ORDER BY `Id` ASC";
             $que = mysqli_query($connection, $sql);
             while($res = mysqli_fetch_array($que)){
-                array_push($returnSubcategories, ['id'=>$res['Id'], 'idCategory'=>$res['IdCategory'], 'name'=>$res['Name']]);
+                $returnArray[$res['IdCategory']]['subcategories'][$res['Id']]=['name'=>$res['Name'], 'items'=>[]];
+                $subcategoriesCategories[$res['Id']]=$res['IdCategory'];
             }
 
             $sql = "SELECT `Id`, `IdSubcategory`, `Name`, `Description`, `OnStock` FROM items ORDER BY `Id` ASC";
             $que = mysqli_query($connection, $sql);
             while($res = mysqli_fetch_array($que)){
-                array_push($returnItems, ['id'=>$res['Id'], 'idSubcategory'=>$res['IdSubcategory'], 'name'=>$res['Name'], 'description'=>$res['Description'], 'stock'=>$res['OnStock']]);
+                $returnArray[$subcategoriesCategories[$res['IdSubcategory']]]['subcategories'][$res['IdSubcategory']]['items'][$res['Id']]=['name'=>$res['Name'], 'description'=>$res['Description'], 'stock'=>$res['OnStock']];
             }
 
-            echo json_encode(array("message"=>true, "categories"=>$returnCategories, "subcategories"=>$returnSubcategories, "items"=>$returnItems));
+            echo json_encode(array("message"=>true, "items"=>$returnArray));
         }catch(Exception $e) {
-            echo json_encode(array("message"=>$e->getMessage(), "categories"=>null, "subcategories"=>null, "items"=>null));
+            echo json_encode(array("message"=>$e->getMessage(), "items"=>null));
+        }
+    }
+    /// ==========
+
+    /// POST: build select data for edit item in admin.php
+    if(isset($_POST["editItemData"])){
+        $itemId = $_POST["editItemData"];
+        unset($_POST["editItemData"]);
+
+        try{
+            $connection = getConnection();
+
+            $subcatId = 0;
+            $returnData = '';
+            
+            $itemName = 0;
+            $itemDescription = 0;
+            $itemOnStock = 0;
+            $itemPhoto = false;
+
+            $sql = "SELECT `Name`, `Description`, `OnStock` FROM items WHERE `Id`='$itemId'";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                $itemName = $res["Name"];
+                $itemDescription = $res["Description"];
+                $itemOnStock = $res["OnStock"];
+            }
+
+            foreach(glob("../photo/$itemId.*") as $filename) {
+                $itemPhoto = pathinfo($filename)['basename'];
+            }
+
+            $sql = "SELECT `IdSubcategory` FROM items WHERE `Id`='$itemId'";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                $subcatId = $res["IdSubcategory"];
+            }
+
+            $sql = "SELECT `Id`, `Name` FROM subcategories ORDER BY `Id` ASC";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                $returnData .= '<option value="'.$res["Id"].'" ';
+
+                if($res['Id'] == $subcatId)
+                    $returnData .= 'selected';
+
+                $returnData .= '>'.$res["Name"].'</option>';
+            }
+
+            echo json_encode(array("message"=>true, "name"=>$itemName, "description"=>$itemDescription, "onstock"=>$itemOnStock, "photo"=>$itemPhoto, "selectHtml"=>$returnData));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage()));
         }
     }
     /// ==========

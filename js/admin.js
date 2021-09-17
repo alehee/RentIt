@@ -1,14 +1,13 @@
-// Get orders history
+// Get orders history and items edit
 $(document).ready(function(){
     
     /// Get history array from post.php
-    $.post( "php/post.php", { getHistory: true }, function( historyData ) {
-        
+    $.post( "php/post.php", { getHistory: true }, function( historyData ) {  
         if(historyData.message==true){
             var months = {};
 
             historyData.history.forEach(element => {
-                console.log(element);
+                //console.log(element);
                 var month = element.start.substring(0,7);
                 if(!(month in months)){
                     months[month] = [];
@@ -37,7 +36,35 @@ $(document).ready(function(){
     /// Get items-edit array from post.php
     $.post( "php/post.php", { getItemsEdit: true }, function( itemsData ) {
         if(itemsData.message==true){
-            
+            var html = '';
+            var cats = itemsData.items;
+            for(let catId in cats){
+                console.log(cats[catId]);
+                var subcats = cats[catId]['subcategories'];
+
+                html += '<div id="admin-edit-category-'+catId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-category admin-edit-toggle">'+cats[catId]['name']+'</div>';
+                html += '<div id="admin-edit-category-'+catId+'-body" class="admin-edit-category-body">';
+
+                for(let subcatId in subcats){
+                    console.log(subcats[subcatId]);
+                    var items = subcats[subcatId]['items'];
+
+                    html += '<div id="admin-edit-subcategory-'+subcatId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-subcategory admin-edit-toggle">'+subcats[subcatId]['name']+'</div>';
+                    html += '<div id="admin-edit-subcategory-'+subcatId+'-body" class="admin-edit-subcategory-body">';
+
+                    for(let itemId in items){
+                        console.log(items[itemId]);
+
+                        html += '<div id="admin-edit-item-'+itemId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-item admin-edit-toggle">'+items[itemId]['name']+'</div>';
+                        html += '<div id="admin-edit-item-'+itemId+'-body" class="admin-edit-item-body rounded">';
+                        html += '<div class="d-flex justify-content-center p-2"><div name="'+itemId+'" class="btn btn-primary btn-rentit btn-grn admin-edit-btn-edit" style="margin-right:1%;">Edit item</div><div name="'+itemId+'" class="btn btn-primary btn-rentit btn-red admin-edit-btn-remove" style="margin-right:1%;">Delete item</div><span id="admin-edit-remove-conf-span-'+itemId+'"> Confirm item removing <div name="'+itemId+'" class="btn btn-primary btn-rentit btn-red admin-edit-btn-remove-conf">Remove</div></span></div>';
+                        html += '</div>';
+                    }
+                    html += '</div>';
+                }
+                html += '</div>';
+            }
+            $( '#admin-edit' ).append(html);
         }
     }, "json");
     /// ==========
@@ -91,6 +118,63 @@ $(document).on('click', '.admin-accept-btn', function(clicked){
 $(document).on('click', '.admin-history-month-banner', function(clicked){
     var target = $(this).attr('id').replace('banner', 'table');
     $( '#'+target ).toggle();
+});
+
+// Open edit divs
+$(document).on('click', '.admin-edit-toggle', function(clicked){
+    var target = $(this).attr('id');
+
+    if(target == 'admin-edit-banner')
+        target = 'admin-edit';
+
+    else if(target.startsWith('admin-edit-category') || target.startsWith('admin-edit-subcategory') || target.startsWith('admin-edit-item'))
+        target += '-body';
+
+    $( '#'+target ).toggle();
+
+    // Scrolling to element
+    if($( '#'+target ).is(":visible")){
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $( '#'+target ).offset().top
+        }, 100);
+    }
+});
+
+// Run edit script
+$(document).on('click', '.admin-edit-btn-edit', function(clicked){
+    var target = $(this).attr('name');
+
+    $.post( "php/post.php", { editItemData: target }, function( data ) {
+        $( '#edit-item-name' ).val(data.name);
+        $( '#edit-item-description' ).text(data.description);
+        $( '#edit-item-stock' ).val(data.onstock);
+        $( '#edit-item-subcat' ).append(data.selectHtml);
+            
+        if(data.photo == false)
+            $( '#edit-item-file-info' ).text('<span style="background-color:red;">There\'s no photo uploaded. Upload below if you want to.</span>');
+        else
+            $( '#edit-item-file-info' ).text('Photo for this item already uploaded. If you want to change it upload new below.');
+
+        $( '#edit-modal' ).modal('show');
+    }, "json");
+});
+
+// Open remove confirmation span
+$(document).on('click', '.admin-edit-btn-remove', function(clicked){
+    var target = $(this).attr('name');
+    $( '#admin-edit-remove-conf-span-'+target ).toggle();
+});
+
+// Run remove script
+$(document).on('click', '.admin-edit-btn-remove-conf', function(clicked){
+    var target = $(this).attr('name');
+    //alert(target);
+
+    $( '#wait-modal' ).modal('show');
+
+    $.post( "php/post.php", { delItem: target }, function( data ) {
+        
+    }, "json");
 });
 
 // Open ADD smthg divs

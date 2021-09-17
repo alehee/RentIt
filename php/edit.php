@@ -120,4 +120,24 @@
         header("Refresh:0; url=../admin.php");
     }
     /// ==========
+
+    /// POST: delete item
+    if(isset($_POST["del-item"])){
+        $itemId = $_POST["del-item"];
+        unset($_POST["del-item"]);
+
+        
+
+        //header("Refresh:0; url=../admin.php");
+    }
+    /// ==========
+
+    /// POST: edit item
+    if(isset($_POST["edit-item"])){
+
+        
+
+        //header("Refresh:0; url=../admin.php");
+    }
+    /// ==========
 ?>

@@ -70,13 +70,12 @@
 
             <!-- Full list of orders --->
             <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
-            <div id="admin-history-main">
-                
+            <div id="admin-history-main">  
             </div>
 
             <!-- Add new item --->
             <h2 class="admin-title d-grid mx-auto pt-4">ADD CATEGORY/SUBCATEGORY/ITEM</h2>
-            <div id="admin-addcategory-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE CATEGORY</div>
+            <div id="admin-addcategory-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE CATEGORY</div>
             <div id="admin-addcategory" class="admin-add-div">
                 <form action="php/edit.php" method="post" class="input-group">
                     <input type="text" name="add-cat" class="form-control" placeholder="Enter category name to add">
@@ -91,7 +90,7 @@
                     <div id="admin-btn-delcategory" class="btn btn-primary btn-rentit btn-red admin-btn-conf">Delete category</div><span id="admin-conf-cat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button></span>
                 </form>
             </div>
-            <div id="admin-addsubcategory-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE SUBCATEGORY</div>
+            <div id="admin-addsubcategory-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD/DELETE SUBCATEGORY</div>
             <div id="admin-addsubcategory" class="admin-add-div">
                 <form action="php/edit.php" method="post" class="input-group">
                     <select class="form-select form-select" name="add-subcat-cat">
@@ -110,7 +109,7 @@
                     <div id="admin-btn-delsubcategory" class="btn btn-primary btn-rentit btn-red admin-btn-conf">Delete subcategory</div><span id="admin-conf-subcat"> Confirm <button type="submit" class="btn btn-primary btn-rentit btn-grn">Yes</button></span>
                 </form>
             </div>
-            <div id="admin-additem-banner" class="d-grid mx-auto w-50 text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD NEW ITEM</div>
+            <div id="admin-additem-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-add-banner">ADD NEW ITEM</div>
             <div id="admin-additem" class="admin-add-div">
                 <form action="php/edit.php" method="post" class="input-group" enctype="multipart/form-data">
                     <div class="input-group">
@@ -134,9 +133,45 @@
                 </form>
             </div>
 
+            <!-- Info about items with wrong category --->
+            <div id="admin-itemswrong">
+                
+            </div>
+
             <!-- Edit item --->
             <h2 class="admin-title d-grid mx-auto pt-4">EDIT ITEM</h2>
+            <div id="admin-edit-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-toggle">EDIT ITEMS</div>
+            <div id="admin-edit">
+            </div>
         
+        </div>
+
+        <!-- Edit modal --->
+        <div class="modal fade" id="edit-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit item</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form action="php/edit.php" method="post" class="input-group" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <select id="edit-item-subcat" class="form-select form-select" name="edit-item-subcat"></select>
+                                <input id="edit-item-name" type="text" name="edit-item-name" class="form-control" placeholder="Enter item name" required>
+                                <input id="edit-item-stock" type="number" name="edit-item-stock" class="form-control" placeholder="How many on stock" required>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="edit-item-description" name="edit-item-description" class="form-control" placeholder="Enter description for item"></textarea>
+                            </div>
+                            <div id="edit-item-file-info" class="input-group"></div>
+                            <div class="input-group">
+                                <input id="edit-item-file" name="edit-item-file" class="form-control" type="file">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-rentit btn-grn" style="margin-top:1%">Edit item</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Wait modal --->

@@ -77,6 +77,10 @@ $(document).on('click', '#offer-list-btn-date', function(clicked){
 
 // Open modal with new order script
 $(document).on('click', '#offer-list-btn-order', function(clicked){
+    $( '#offer-modal-item' ).text('');
+    $( '#offer-modal-start' ).text('');
+    $( '#offer-modal-end' ).text('');
+    
     var item = $( '#offer-list-title' ).text();
     var start = $( '#offer-list-date-start' ).val();
     var end = $( '#offer-list-date-end' ).val();

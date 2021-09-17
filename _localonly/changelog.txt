@@ -8,6 +8,8 @@
         * added bar with statistics
         * added ability to add/delete categories and subcategories
         * added 'add new item' module
+    * BUGS FIX:
+        * multiple values in new order modal
 
 * ** 0.1.0 ** --- in development
     * code cleanup and docs writing
