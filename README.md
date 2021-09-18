@@ -10,7 +10,7 @@
 ## How it works?
 Customer can view full list of items on *order* page. User can toggle through categories and items to find something interesting.
 <p align="center">
-  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-order.png">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit.png">
 </p>
 
 Creating new order will trigger mail system for customer and administrator to inform about new order and give opportunity to cancel the order for user.
