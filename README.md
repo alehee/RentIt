@@ -10,7 +10,7 @@
 ## How it works?
 Customer can view full list of items on *order* page. User can toggle through categories and items to find something interesting.
 <p align="center">
-  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit.png">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-order.png">
 </p>
 
 Creating new order will trigger mail system for customer and administrator to inform about new order and give opportunity to cancel the order for user.
@@ -20,7 +20,7 @@ Creating new order will trigger mail system for customer and administrator to in
 
 You as an administrator have to manage the website from **admin panel**.
 <p align="center">
-  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-admin.png">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-admin-2.png">
 </p>
 Here you can accept the orders, manage items on portal and check the orders history.
 
