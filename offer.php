@@ -33,6 +33,9 @@
                 </div>
             </div>
 
+            <!-- Cheer up information --->
+            <div id="offer-cheer" class="text-center" >Feel free to check our stuff. Simply click on category below to check our stock. <br><b>We're waiting for your order!</b></div>
+
             <!-- Items list with categories etc --->
             <div id="offer-list" class="d-grid mx-auto py-3 p-1 rounded container">
                 <div class="row">

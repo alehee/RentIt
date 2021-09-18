@@ -236,6 +236,11 @@
             $returnArray = [];
             $subcategoriesCategories = [];
 
+            // For no-subcategory items
+            $returnArray['0']=['name'=>'No subcategory', 'subcategories'=>[]];
+            $returnArray['0']['subcategories']['0']=['name'=>'No subcategory', 'items'=>[]];
+            $subcategoriesCategories['0']='0';
+
             $sql = "SELECT `Id`, `Name` FROM categories ORDER BY `Id` ASC";
             $que = mysqli_query($connection, $sql);
             while($res = mysqli_fetch_array($que)){
@@ -254,6 +259,9 @@
             while($res = mysqli_fetch_array($que)){
                 $returnArray[$subcategoriesCategories[$res['IdSubcategory']]]['subcategories'][$res['IdSubcategory']]['items'][$res['Id']]=['name'=>$res['Name'], 'description'=>$res['Description'], 'stock'=>$res['OnStock']];
             }
+
+            if(count($returnArray['0']['subcategories']['0']['items'])<1)
+                unset($returnArray['0']);
 
             echo json_encode(array("message"=>true, "items"=>$returnArray));
         }catch(Exception $e) {
@@ -308,6 +316,30 @@
             }
 
             echo json_encode(array("message"=>true, "name"=>$itemName, "description"=>$itemDescription, "onstock"=>$itemOnStock, "photo"=>$itemPhoto, "selectHtml"=>$returnData));
+        }catch(Exception $e) {
+            echo json_encode(array("message"=>$e->getMessage()));
+        }
+    }
+    /// ==========
+
+    /// POST: get history for admin.php
+    if(isset($_POST["getItemSubcatProblems"])){
+        unset($_POST["getItemSubcatProblems"]);
+
+        try{
+            $connection = getConnection();
+
+            $problem = false;
+            $returnArray = [];
+
+            $sql = "SELECT `Name` FROM items WHERE `IdSubcategory`='0'";
+            $que = mysqli_query($connection, $sql);
+            while($res = mysqli_fetch_array($que)){
+                array_push($returnArray, $res["Name"]);
+                $problem = true;
+            }
+
+            echo json_encode(array("message"=>true, "problem"=>$problem, "items"=>$returnArray));
         }catch(Exception $e) {
             echo json_encode(array("message"=>$e->getMessage()));
         }

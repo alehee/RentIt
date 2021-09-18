@@ -21,6 +21,12 @@
     color: #79d279;
 }
 
+#offer-cheer{
+    width: 80%;
+    margin: 1% 10%;
+    font-size: large;
+}
+
 #offer-list{
     width: 90%;
     border: 2px solid gray;

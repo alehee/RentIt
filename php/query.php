@@ -52,7 +52,7 @@
         }
 
         // Add items to array
-        $sql = "SELECT `Id`, `IdSubcategory`, `Name`, `Description` FROM items ORDER BY `Name` ASC";
+        $sql = "SELECT `Id`, `IdSubcategory`, `Name`, `Description` FROM items WHERE `IdSubcategory`!='0' ORDER BY `Name` ASC";
         $que = mysqli_query($connection, $sql);
         while($res = mysqli_fetch_array($que)){
             $itemId = $res["Id"];
@@ -125,7 +125,11 @@
 
         // Display orders
         foreach($orders as $order){
-            echo "<tr>";
+            if(strtotime($order['start']) >= strtotime(date("Y-m-d")))
+                echo "<tr class='table-info'>";
+            else
+                echo "<tr class='table-warning'>";
+            
             echo "<td>".$order['item']."</td>";
             echo "<td>".$order['start']."</td>";
             echo "<td>".$order['end']."</td>";

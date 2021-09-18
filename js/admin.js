@@ -2,12 +2,11 @@
 $(document).ready(function(){
     
     /// Get history array from post.php
-    $.post( "php/post.php", { getHistory: true }, function( historyData ) {  
+    $.post( "php/post.php", { getHistory: true }, function( historyData ) {
         if(historyData.message==true){
             var months = {};
 
             historyData.history.forEach(element => {
-                //console.log(element);
                 var month = element.start.substring(0,7);
                 if(!(month in months)){
                     months[month] = [];
@@ -39,21 +38,18 @@ $(document).ready(function(){
             var html = '';
             var cats = itemsData.items;
             for(let catId in cats){
-                console.log(cats[catId]);
                 var subcats = cats[catId]['subcategories'];
 
                 html += '<div id="admin-edit-category-'+catId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-category admin-edit-toggle">'+cats[catId]['name']+'</div>';
                 html += '<div id="admin-edit-category-'+catId+'-body" class="admin-edit-category-body">';
 
                 for(let subcatId in subcats){
-                    console.log(subcats[subcatId]);
                     var items = subcats[subcatId]['items'];
 
                     html += '<div id="admin-edit-subcategory-'+subcatId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-subcategory admin-edit-toggle">'+subcats[subcatId]['name']+'</div>';
                     html += '<div id="admin-edit-subcategory-'+subcatId+'-body" class="admin-edit-subcategory-body">';
 
                     for(let itemId in items){
-                        console.log(items[itemId]);
 
                         html += '<div id="admin-edit-item-'+itemId+'" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-item admin-edit-toggle">'+items[itemId]['name']+'</div>';
                         html += '<div id="admin-edit-item-'+itemId+'-body" class="admin-edit-item-body rounded">';
@@ -68,6 +64,20 @@ $(document).ready(function(){
         }
     }, "json");
     /// ==========
+    
+    /// Get items with wrong subcategories
+    $.post( "php/post.php", { getItemSubcatProblems: true }, function( data ) {
+        if(data.message==true && data.problem==true){
+            
+            for(var i=0; i<data.items.length; i++){
+                $( '#admin-itemswrong-ul' ).append('<li>'+data.items[i]+'</li>');
+            }
+
+            $( '#admin-itemswrong' ).css('display','block');
+        }
+    }, "json");
+    /// ==========
+    
 });
 
 // Set acceptation status and send query script

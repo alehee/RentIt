@@ -8,7 +8,23 @@
 *RentIt* is an universal web platform for rent-a-thing purposes written in PHP with Bootstrap and JQuery with admin control panel, easy to use UI and cool stuff like top lists. Manage your rental business with this light platform, create items to rent and let the platform handle the orders system. Users will be pleased with this solution!
 
 ## How it works?
-It's gonna be legen- wait for it...
+Customer can view full list of items on *order* page. User can toggle through categories and items to find something interesting.
+<p align="center">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-order.png">
+</p>
+
+Creating new order will trigger mail system for customer and administrator to inform about new order and give opportunity to cancel the order for user.
+<p align="center">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-mail.png">
+</p>
+
+You as an administrator have to manage the website from **admin panel**.
+<p align="center">
+  <img src="https://github.com/alehee/RentIt/blob/main/_localonly/rentit-admin.png">
+</p>
+Here you can accept the orders, manage items on portal and check the orders history.
+
+And there it is. Feel free to test it for yourself!
 
 ## Used technology
 Langagues:
@@ -31,7 +47,7 @@ There's two ways: you can download the master branch with code, check how it's w
 * MySQL server (or any other SQL server)
 
 ### Download link
-[Here's](https://drive.google.com/file/d/1skgWdq1h09qe2LZS4ny8AgbnQ15w-hir/view?usp=sharing) the download link for the latest version of the website in .zip file.
+[Here's](https://drive.google.com/file/d/1PoS2Blr0C-maADP216LYoyDIOXHSkaMc/view?usp=sharing) the download link for the latest version of the website in .zip file.
 
 ## Installation
 Installation proces of the main features is very easy, but there's some steps that requires more attention.
@@ -77,6 +93,30 @@ The last step of configuring it is to change few lines in ***/php/mail.php*** fi
 
 ## Changelog
 What's new with the project? Here's the list:
+
+* **1.0.0** --- 2021-09-18
+    * INDEX PAGE:
+        * added basic statistics
+        * added 'best of' module
+        * added favicon
+    * OFFER:
+        * added bar with statistics
+        * small visual update
+    * ADMIN:
+        * added bar with statistics
+        * added ability to add/delete categories and subcategories
+        * added 'add new item' module
+        * added history of orders with download option
+        * added 'edit item' module
+        * on 'upcoming/ending orders' module added colored bars
+        * added information in case of no category for item
+    * BUGS FIX:
+        * multiple values in new order modal
+        * minor bugs fix
+
+* **0.1.0** --- 2021-09-10
+    * code cleanup and docs writing
+    * added banner to github
 
 * **0.0.1** --- 2021-09-06
     * first functional version

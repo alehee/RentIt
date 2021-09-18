@@ -1,21 +1,28 @@
-* ** 1.0.0 ** --- in development
+* **1.0.0** --- 2021-09-18
     * INDEX PAGE:
         * added basic statistics
         * added 'best of' module
+        * added favicon
     * OFFER:
         * added bar with statistics
+        * small visual update
     * ADMIN:
         * added bar with statistics
         * added ability to add/delete categories and subcategories
         * added 'add new item' module
+        * added history of orders with download option
+        * added 'edit item' module
+        * on 'upcoming/ending orders' module added colored bars
+        * added information in case of no category for item
     * BUGS FIX:
         * multiple values in new order modal
+        * minor bugs fix
 
-* ** 0.1.0 ** --- in development
+* **0.1.0** --- 2021-09-10
     * code cleanup and docs writing
     * added banner to github
 
-* ** 0.0.1 ** --- 2021-09-06
+* **0.0.1** --- 2021-09-06
     * first functional version
     * items database system
     * ordering system

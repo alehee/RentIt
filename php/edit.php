@@ -158,7 +158,7 @@
         unset($_POST["edit-item-stock"]);
         unset($_POST["edit-item-description"]);
 
-        echo $itemId.", ".$itemSubcatId.", ".$itemName.", ".$itemStock.", ".$itemDescription;
+        //echo $itemId.", ".$itemSubcatId.", ".$itemName.", ".$itemStock.", ".$itemDescription;
 
         if($itemName!="" && $itemSubcatId!="0"){
             $connection = getConnection();

@@ -59,6 +59,8 @@
 
             <!-- Next three days events (start/end of order) --->
             <h2 class="admin-title d-grid mx-auto pt-4">UPCOMING/ENDING ORDERS</h2>
+            <div id="admin-upcoming-list-legend">Starting <span id="admin-upcoming-list-legend-start">■</span><span style="margin:10px;"> </span> Ending <span id="admin-upcoming-list-legend-end">■</span></div>
+            <div style="clear:both;"></div>
             <table id="admin-upcoming-list" class="table table-striped">
                 <thead>
                     <tr><th scope="col">Item</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Phone</th></tr>
@@ -128,19 +130,24 @@
                 </form>
             </div>
 
-            <!-- Info about items with wrong category --->
-            <div id="admin-itemswrong">
-                
-            </div>
-
             <!-- Edit item --->
             <h2 class="admin-title d-grid mx-auto pt-4">EDIT ITEM</h2>
+                <!-- Info about items with wrong category --->
+                <div id="admin-itemswrong" class="text-center">
+                    These items have a problem with subcategories:
+                    <ul id="admin-itemswrong-ul">
+                    </ul>
+                </div>
             <div id="admin-edit-banner" class="d-grid mx-auto text-center rounded p-2 btn btn-primary btn-rentit admin-edit-toggle">EDIT ITEMS</div>
             <div id="admin-edit">
             </div>
 
             <!-- History of orders --->
             <h2 class="admin-title d-grid mx-auto pt-4">HISTORY OF ORDERS</h2>
+            <form action="php/download.php" method="post">
+                <div id="admin-history-download-bar">Since <input id="admin-history-download-start" type="date" name="download-start"/> to <input id="admin-history-download-end" type="date" name="download-end"/> <button id="admin-history-download-btn" class="btn btn-primary btn-rentit" type="submit">Download orders</button></div>
+            </form>
+            <div style="clear:both;"></div>
             <div id="admin-history-main">  
             </div>
         

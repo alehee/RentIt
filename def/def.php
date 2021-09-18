@@ -1,14 +1,14 @@
 <?php
 
 /// Edit this with new versions
-$VERSION = "dev 1.0.0";
-$cssUpdateVariable = "17092021";
+$VERSION = "1.0.0";
+$cssUpdateVariable = "18092021";
 /// ==========
 
 /// jQuery, Bootstrap linked
 $def_Head = '
 <link href="framework/bootstrap-css/bootstrap.min.css" rel="stylesheet">
-<link rel="icon" href="favicon.ico"/>
+<link rel="icon" href="img/favicon.ico"/>
 ';
 
 $def_AfterBody = '

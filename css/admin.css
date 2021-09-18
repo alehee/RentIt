@@ -57,6 +57,35 @@
     text-align: center;
 }
 
+#admin-upcoming-list-legend{
+    float: right;
+    margin-right: 10%;
+}
+
+#admin-upcoming-list-legend-start{
+    color:#bee5eb; 
+    font-size:x-large;
+}
+
+#admin-upcoming-list-legend-end{
+    color:#ffeeba; 
+    font-size:x-large;
+}
+
+#admin-history-download-bar{
+    float: right;
+    font-size: small;
+    margin-right: 10%;
+}
+
+#admin-history-download-btn{
+    background-color: #e6b800;
+}
+
+#admin-history-download-btn:hover{
+    background-color: #cca300;
+}
+
 #admin-history-main{
     width: 80%;
     margin: 10px 10%;
@@ -138,6 +167,18 @@
 #admin-btn-additem{
     margin: 5px auto;
     border-radius: 5px;
+}
+
+#admin-itemswrong{
+    font-size: small;
+    color: red;
+    display: none;
+}
+
+#admin-itemswrong-ul{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #admin-edit-banner{
